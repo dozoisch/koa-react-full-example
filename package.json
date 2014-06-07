@@ -1,0 +1,55 @@
+{
+  "name": "koa-react-full-example",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Full example using Koa, React, Mongoose, Gulp, Mocha",
+  "keywords": [
+    "koa",
+    "react",
+    "mongoose",
+    "mocha",
+    "gulp",
+    "mocha",
+    "example"
+  ],
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dozoisch/koa-react-full-example"
+  },
+  "scripts": {
+    "start": "gulp dev"
+  },
+  "author": "Hugo Dozois <hugo@dozoisch.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.11.9"
+  },
+  "dependencies": {
+    "browserify": "~4.1.8",
+    "co-views": "~0.2.0",
+    "envify": "~1.2.1",
+    "gulp": "~3.7.0",
+    "gulp-less": "~1.2.3",
+    "gulp-nodemon": "~1.0.4",
+    "gulp-react": "~0.3.3",
+    "jade": "~1.3.1",
+    "koa": "~0.6.2",
+    "koa-compress": "~1.0.7",
+    "koa-logger": "~1.2.1",
+    "koa-response-time": "~1.0.2",
+    "koa-route": "~1.1.4",
+    "koa-static": "~1.4.5",
+    "lodash": "~2.4.1",
+    "mongoose": "~3.9.0",
+    "react": "~0.10.0",
+    "superagent": "~0.18.0",
+    "vinyl-source-stream": "~0.1.1"
+  },
+  "devDependencies": {
+    "co": "~3.0.6",
+    "mocha": "~1.20.1",
+    "should": "~4.0.1",
+    "supertest": "~0.13.0"
+  }
+}
