@@ -4,7 +4,6 @@ var Models = [
   mongoose.model('Count')
 ];
 
-
 exports.dropDatabase = function *() {
   yield Models.map(dropCollection);
 }

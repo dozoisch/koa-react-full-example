@@ -2,14 +2,8 @@
 /**
  * Dependencies
  */
-var fs = require('fs'); // Node File System
+var fs = require('fs');
 var koa = require('koa');
-var koa_static = require('koa-static');
-var responseTime = require('koa-response-time');
-var logger = require('koa-logger');
-var compress = require('koa-compress');
-var router = require('koa-route');
-var views = require('co-views');
 var mongoose = require('mongoose');
 var react = require('react');
 
@@ -26,7 +20,7 @@ mongoose.connect(config.mongo.url);
 /**
  * Load the models
  */
-var models_path = __dirname + '/src/models';
+var models_path = config.app.root + '/src/models';
 fs.readdirSync(models_path).forEach(function (file) {
     if (~file.indexOf('js')) {
         require(models_path + '/' + file);
@@ -37,35 +31,10 @@ fs.readdirSync(models_path).forEach(function (file) {
  * Server
  */
 var app = module.exports  = koa();
+require('./config/koa')(app, config);
 
-if(config.app.env != 'test')
-  app.use(logger());
-
-app.use(koa_static(__dirname + '/public'));
-
-app.use(compress());
-app.use(responseTime());
-
-app.use(router.get('/', function *(next) {
-  this.render = views('src/views', {
-    map: {
-      jade: 'jade'
-    },
-    default : 'jade'
-  });
-  yield next;
-}));
-
-var countController = require('./src/controllers/count');
-
-app.use(router.get('/inc', countController.increment));
-app.use(router.get('/value', countController.getCount));
-app.use(router.get('/dec', countController.decrement));
-
-app.use(function *(next) {
-  this.body = yield this.render('index');
-  this.status = 200;
-});
+// Routes
+require('./config/routes')(app);
 
 // Start app
 if (!module.parent) {

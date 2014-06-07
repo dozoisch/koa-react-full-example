@@ -5,9 +5,7 @@ var request = require('superagent');
 
 module.exports = React.createClass({
   getInitialState: function () {
-    return {
-      count : this.props.initialCount || 0
-    };
+    return { count : this.props.initialCount || 0 };
   },
   componentWillMount: function () {
     request.get('/value')

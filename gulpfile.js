@@ -41,7 +41,7 @@ gulp.task('less-compile', function () {
 gulp.task('install', ['app-compile', 'less-compile']);
 
 gulp.task('watch', function () {
-  gulp.watch(paths.in.jsx, ['app-compile']);
+  gulp.watch(paths.in.jsx, ['app-compile', 'nodemon']);
   gulp.watch(paths.in.less, ['less-compile']);
   gulp.watch(paths.toWatch, ['nodemon']);
 });
