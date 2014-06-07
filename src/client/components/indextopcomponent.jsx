@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 'use strict';
 var React = require('react');
-var TodoApp = require('./todoapp');
 var Counter = require('./counter');
 
 module.exports = React.createClass({

@@ -36,7 +36,7 @@ fs.readdirSync(models_path).forEach(function (file) {
 /**
  * Server
  */
-var app = koa();
+var app = module.exports  = koa();
 
 if(config.app.env != 'test')
   app.use(logger());
@@ -68,7 +68,8 @@ app.use(function *(next) {
 });
 
 // Start app
-app.listen(config.app.port);
-console.log('Server started, listening on port: ' + config.app.port + '\nEnvironment: ' + config.app.env);
-
-exports = module.exports = app;
+if (!module.parent) {
+ app.listen(config.app.port);
+ console.log('Server started, listening on port: ' + config.app.port);
+}
+console.log('Environment: ' + config.app.env);

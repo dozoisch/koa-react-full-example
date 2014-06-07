@@ -18,7 +18,8 @@
     "url": "https://github.com/dozoisch/koa-react-full-example"
   },
   "scripts": {
-    "start": "gulp dev"
+    "start": "gulp dev",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --harmony --reporter spec ./test/test-*.js"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
   "license": "MIT",
