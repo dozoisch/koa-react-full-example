@@ -6,6 +6,8 @@
 
 Full example using Koa, React, Mongoose, Gulp, Mocha, and on Travis
 
+This example contains a MVC pattern that presents a simple counter to the clientthat increments and decrements a value in the Mongo Database.
+
 ### Prerequisite
 
 * [NodeJs](http://nodejs.org/download/) > 0.9.11
