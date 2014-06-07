@@ -1,6 +1,10 @@
 # koa-react-full-example
 
-Full example using Koa, React, Mongoose, Gulp, Mocha
+[![Build Status][travis.img]][travis.url]
+[![dependencies][deps.img]][deps.url]
+[![devdependencies][devdeps.img]][devdeps.url]
+
+Full example using Koa, React, Mongoose, Gulp, Mocha, and on Travis
 
 ### Build
 
@@ -25,3 +29,10 @@ Updates to come:
 
  - Adding css to the example
  - Description of some design choices
+
+[travis.img]: https://api.travis-ci.org/dozoisch/koa-react-full-example.png
+[travis.url]: https://travis-ci.org/dozoisch/koa-react-full-example
+[deps.img]: https://david-dm.org/dozoisch/koa-react-full-example.png
+[deps.url]: https://david-dm.org/dozoisch/koa-react-full-example
+[devdeps.img]: https://david-dm.org/dozoisch/koa-react-full-example/dev-status.png
+[devdeps.url]: https://david-dm.org/dozoisch/koa-react-full-example#info=devDependencies

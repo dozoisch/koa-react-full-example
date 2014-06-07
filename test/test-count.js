@@ -3,13 +3,13 @@
  */
 var mongoose = require('mongoose');
 var should = require('should');
+var app = require('../server');
 var request = require('supertest').agent(app.listen());
 var databaseHelper = require('./middlewares/database');
 
 // support for es6 generators
 var co = require('co');
 
-var app = require('../server');
 
 describe('Count', function () {
   // Model
