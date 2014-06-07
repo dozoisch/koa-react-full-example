@@ -6,6 +6,22 @@
 
 Full example using Koa, React, Mongoose, Gulp, Mocha, and on Travis
 
+This example contains a MVC pattern that presents a simple counter to the clientthat increments and decrements a value in the Mongo Database.
+
+### Prerequisite
+
+* [NodeJs](http://nodejs.org/download/) > 0.9.11
+* [npm](https://www.npmjs.org/)
+* [Mongo Db](http://www.mongodb.org/downloads)
+
+### Installation
+
+0. Checkout in a directory
+0. `npm install`
+0. `npm install -g gulp`
+0. `gulp install`
+0. Try it and ensure tests passes with `npm test`
+
 ### Build
 
 `gulp` or `gulp install`

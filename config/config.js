@@ -15,7 +15,7 @@ var specific = {
   development: {
     app: {
       port: 3000,
-      name: 'Point de genie - Dev'
+      name: 'Koa React Gulp Mongoose Mocha - Dev'
     },
     mongo: {
       url: 'mongodb://localhost/koareactfullexample_dev',
@@ -24,7 +24,7 @@ var specific = {
   test: {
     app: {
       port: 3001,
-      name: 'Point de genie - Test realm'
+      name: 'Koa React Gulp Mongoose Mocha - Test realm'
     },
     mongo: {
       url: 'mongodb://localhost/koareactfullexample_test',
@@ -33,7 +33,7 @@ var specific = {
   production: {
     app: {
       port: process.env.PORT || 3000,
-      name: 'Point de genie'
+      name: 'Koa React Gulp Mongoose Mocha'
     },
     mongo: {
       url: 'mongodb://localhost/koareactfullexample',
