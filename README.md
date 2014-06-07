@@ -6,6 +6,17 @@
 
 Full example using Koa, React, Mongoose, Gulp, Mocha, and on Travis
 
+### Prerequisite
+
+0. Install [NodeJs](http://nodejs.org/download/) > 0.9.11
+0. Install [npm](https://www.npmjs.org/)
+0. Install [Mongo Db](http://www.mongodb.org/downloads)
+0. Checkout in a directory
+0. `npm install`
+0. `npm install -g gulp`
+0. `gulp install`
+0. Try it `npm test`
+
 ### Build
 
 `gulp` or `gulp install`
