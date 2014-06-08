@@ -6,13 +6,13 @@
 
 Full example using Koa, React, Mongoose, Gulp, Mocha, and on Travis
 
-This example contains a MVC pattern that presents a simple counter to the clientthat increments and decrements a value in the Mongo Database.
+This example contains a MVC pattern that presents a simple counter to the client that increments and decrements a value in the Mongo Database with Mongoose. The UI is all handled with ReactJS.
 
 ### Prerequisite
 
-* [NodeJs](http://nodejs.org/download/) > 0.9.11
+* [NodeJs](http://nodejs.org/download/) > 0.11.9
 * [npm](https://www.npmjs.org/)
-* [Mongo Db](http://www.mongodb.org/downloads)
+* [MongoDB](http://www.mongodb.org/downloads)
 
 ### Installation
 
@@ -46,9 +46,9 @@ Updates to come:
  - Adding css to the example
  - Description of some design choices
 
-[travis.img]: https://api.travis-ci.org/dozoisch/koa-react-full-example.png
+[travis.img]: https://api.travis-ci.org/dozoisch/koa-react-full-example.svg
 [travis.url]: https://travis-ci.org/dozoisch/koa-react-full-example
-[deps.img]: https://david-dm.org/dozoisch/koa-react-full-example.png
+[deps.img]: https://david-dm.org/dozoisch/koa-react-full-example.svg
 [deps.url]: https://david-dm.org/dozoisch/koa-react-full-example
-[devdeps.img]: https://david-dm.org/dozoisch/koa-react-full-example/dev-status.png
+[devdeps.img]: https://david-dm.org/dozoisch/koa-react-full-example/dev-status.svg
 [devdeps.url]: https://david-dm.org/dozoisch/koa-react-full-example#info=devDependencies
