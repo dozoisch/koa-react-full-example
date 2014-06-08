@@ -33,8 +33,8 @@ module.exports = React.createClass({
       <div>
         <h3>Counter</h3>
         <div> Count&nbsp;
-          <span onClick={this.onClickInc}>(Click to increment)</span>&nbsp;
-          <span onClick={this.onClickDec}>(Click to decrement)</span>
+          <a href="#" onClick={this.onClickInc}>(Click to increment)</a>&nbsp;
+          <a href="#" onClick={this.onClickDec}>(Click to decrement)</a>
           <span>:&nbsp;{this.state.count}</span>
         </div>
       </div>
