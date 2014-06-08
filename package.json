@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "browserify": "~4.1.8",
+    "browserify-shim": "~3.5.0",
     "co-views": "~0.2.0",
     "envify": "~1.2.1",
     "gulp": "~3.7.0",
@@ -51,5 +52,11 @@
     "mocha": "~1.20.1",
     "should": "~4.0.1",
     "supertest": "~0.13.0"
+  },
+  "browserify": {
+    "transform": [ "browserify-shim" ]
+  },
+  "browserify-shim" : {
+    "react": "global:React"
   }
 }
