@@ -5,6 +5,7 @@ var responseTime = require('koa-response-time');
 var logger = require('koa-logger');
 var views = require('co-views');
 var compress = require('koa-compress');
+var errorHandler = require('koa-error');
 
 module.exports = function (app, config) {
   if(config.app.env != 'test')
@@ -22,4 +23,6 @@ module.exports = function (app, config) {
 
   app.use(compress());
   app.use(responseTime());
+
+  app.use(errorHandler());
   };
