@@ -34,7 +34,7 @@ This projects uses bleeding-edge technology. It also uses unstable version of Mo
 
 `npm start` or `gulp dev`
 
-** Run Tests**
+**Run Tests**
 
 `gulp && npm test`
 
