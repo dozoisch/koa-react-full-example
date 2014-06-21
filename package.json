@@ -43,7 +43,7 @@
     "koa-passport": "0.4.x",
     "koa-response-time": "1.0.x",
     "koa-router": "3.1.x",
-    "koa-sess": "0.3.x",
+    "koa-sess": "0.4.x",
     "koa-static": "1.4.x",
     "lodash": "2.4.x",
     "mongoose": "3.9.x",
