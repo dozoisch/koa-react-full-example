@@ -1,28 +1,36 @@
-'use strict';
-
-var koa_static = require('koa-static');
+var koaStatic = require('koa-static');
+var session = require('koa-sess');
 var responseTime = require('koa-response-time');
 var logger = require('koa-logger');
 var views = require('co-views');
 var compress = require('koa-compress');
 var errorHandler = require('koa-error');
+var bodyParser = require('koa-bodyparser');
 
-module.exports = function (app, config) {
+module.exports = function (app, config, passport) {
+  app.keys = config.app.keys;
+
   if(config.app.env != 'test')
     app.use(logger());
 
-  app.use(koa_static(config.app.root + '/public'));
+
+  app.use(errorHandler());
+  app.use(koaStatic(config.app.root + '/public'));
+
+  app.use(session({
+    key: 'koareactfullexample.sid',
+  }));
+  app.use(bodyParser());
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(function *(next) {
     this.render = views('src/views', {
-      map: { jade: 'jade' },
-      default : 'jade'
+      map: { html: 'whiskers' },
     });
     yield next;
   });
 
   app.use(compress());
   app.use(responseTime());
-
-  app.use(errorHandler());
-  };
+};

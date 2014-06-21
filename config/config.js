@@ -15,7 +15,8 @@ var specific = {
   development: {
     app: {
       port: 3000,
-      name: 'Koa React Gulp Mongoose Mocha - Dev'
+      name: 'Koa React Gulp Mongoose Mocha - Dev',
+      keys: ['super-secret-hurr-durr']
     },
     mongo: {
       url: 'mongodb://localhost/koareactfullexample_dev',
@@ -24,7 +25,8 @@ var specific = {
   test: {
     app: {
       port: 3001,
-      name: 'Koa React Gulp Mongoose Mocha - Test realm'
+      name: 'Koa React Gulp Mongoose Mocha - Test realm',
+      keys: ['super-secret-hurr-durr']
     },
     mongo: {
       url: 'mongodb://localhost/koareactfullexample_test',
