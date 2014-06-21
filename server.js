@@ -5,7 +5,6 @@
 var fs = require('fs');
 var koa = require('koa');
 var mongoose = require('mongoose');
-var react = require('react');
 var passport = require('koa-passport');
 
 /**
