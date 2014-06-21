@@ -1,11 +1,15 @@
 var mongoose = require('mongoose');
+var co = require('co');
 
 var Models = [
-  mongoose.model('Count')
+  mongoose.model('Count'),
+  mongoose.model('User')
 ];
 
-exports.dropDatabase = function *() {
-  yield Models.map(dropCollection);
+exports.dropDatabase = function (cb) {
+  co(function *() {
+    yield Models.map(dropCollection);
+  })(cb);
 }
 
 var dropCollection = function (Model) {

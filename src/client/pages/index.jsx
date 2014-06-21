@@ -1,14 +1,14 @@
 /** @jsx React.DOM */
 'use strict';
 var React = require('react');
-var Counter = require('./counter');
+var Counter = require('../components/counter');
 
 module.exports = React.createClass({
   render: function() {
     return (
       <div>
         <h2>Index - Super Counter</h2>
-        <Counter />
+        <Counter className={this.props.theme} />
       </div>
     );
   }

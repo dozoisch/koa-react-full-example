@@ -25,7 +25,12 @@ gulp.task('jsx-compile', function () {
   .pipe(gulp.dest(paths.out.build_js));
 });
 
-gulp.task('app-compile', ['jsx-compile'], function() {
+gulp.task('copy-js', function () {
+  return gulp.src(paths.in.js)
+  .pipe(gulp.dest(paths.out.build_js));
+})
+
+gulp.task('app-compile', ['jsx-compile', 'copy-js'], function() {
   return browserify(paths.in.app)
     .bundle()
     .pipe(source('app.js'))
