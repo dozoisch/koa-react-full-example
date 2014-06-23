@@ -42,5 +42,5 @@ describe('Index', function () {
     });
   });
 
-  after(function(done) { databaseHelper.dropDatabase(done); });
+  after(function (done) { databaseHelper.dropDatabase(done); });
 });
