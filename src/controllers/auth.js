@@ -11,4 +11,4 @@ exports.createUser = function *() {
   } catch (err) {
     this.redirect('/login?usercreated=0');
   }
-}
+};

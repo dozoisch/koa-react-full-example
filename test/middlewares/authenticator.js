@@ -9,7 +9,7 @@ var User = mongoose.model('User');
 /**
  * Constants
  */
-var CREDENTIALS = { u: 'test@email.com', p:'123123123' };
+const CREDENTIALS = { u: 'test@email.com', p:'123123123' };
 
 exports.LOGIN_URL = '/login';
 
