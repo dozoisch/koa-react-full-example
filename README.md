@@ -54,7 +54,6 @@ The plugin is under MIT license, please see the LICENSE file provided with the m
 
 Updates to come:
 
- - Adding css to the example
  - Description of some design choices
  - Error handling
  - More in-depth React-Koa example

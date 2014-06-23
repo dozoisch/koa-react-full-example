@@ -1,5 +1,12 @@
 #History
 
+## 0.0.6
+- updated koa-sess to 0.4, koa-passport to 0.5, browserify-shim to 3.6
+- Added test for root url
+- merged refactor pr #2
+- Adding history file
+- gulp now uses --harmony like Koa recommends
+
 ## 0.0.5
 - Authentication using koa-passport, passport-local and bcrypt#nan
 - / (index) is now a secured route
