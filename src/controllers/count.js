@@ -8,7 +8,7 @@ exports.getCount = function *() {
     count = new Count();
   }
   this.body = {count: count.value};
-}
+};
 
 exports.increment = function *() {
   var count = yield Count.findOne().exec();

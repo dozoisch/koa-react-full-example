@@ -26,6 +26,7 @@ describe('Bcrypt Thunk\'ed', function () {
       }
     }));
   });
+
   describe('Hash', function () {
     it('should hash password', co(function *() {
       var hash = yield bcrypt.hash(PASSWORD, SALT);
@@ -41,7 +42,8 @@ describe('Bcrypt Thunk\'ed', function () {
         should.exist(err);
       }
     }));
-  })
+  });
+
   describe('Match', function () {
     it('should match passwords', co(function *() {
       var match = yield bcrypt.compare(PASSWORD, HASH);

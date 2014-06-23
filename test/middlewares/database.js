@@ -10,7 +10,7 @@ exports.dropDatabase = function (cb) {
   co(function *() {
     yield Models.map(dropCollection);
   })(cb);
-}
+};
 
 var dropCollection = function (Model) {
   return new Promise(function (resolve, reject) {
@@ -19,4 +19,4 @@ var dropCollection = function (Model) {
       resolve();
     });
   });
-}
+};
