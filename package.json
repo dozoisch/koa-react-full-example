@@ -50,6 +50,7 @@
     "mongoose": "3.9.x",
     "passport-local": "1.0.x",
     "react": "0.10.x",
+    "react-nested-router": "0.2.x",
     "superagent": "0.18.x",
     "vinyl-source-stream": "0.1.x",
     "whiskers": "0.3.x"
@@ -65,6 +66,5 @@
     ]
   },
   "browserify-shim": {
-    "react": "global:React"
   }
 }
