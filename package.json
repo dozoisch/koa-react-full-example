@@ -33,7 +33,7 @@
     "co": "3.0.x",
     "co-views": "0.2.x",
     "gulp": "3.8.x",
-    "gulp-less": "1.2.x",
+    "gulp-less": "1.3.x",
     "gulp-nodemon": "1.0.x",
     "gulp-react": "0.4.x",
     "koa": "0.8.x",
