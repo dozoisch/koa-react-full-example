@@ -1,5 +1,11 @@
 #History
 
+## 0.0.7
+- Adding react-nested-router in the example
+- React is added with browserify
+- Fixed a bug with the inc, dec links that were changing the url
+- Updated react-less to 1.3.x
+
 ## 0.0.6
 - Adding history file
 - updated koa-sess to 0.4, koa-passport to 0.5, browserify-shim to 3.6
