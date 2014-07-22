@@ -12,7 +12,10 @@
         <a class="navbar-brand">React Koa Gulp Mongoose Mocha Demo</a>
       </div>
       <div class="navbar-collapse collapse">
-        <div id="navbarmenu" class="navbar-right"></div>
+        <ul id="navbarmenu" class="nav navbar-nav navbar-right">
+            <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {user.username}</p></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-off"></span> Log Out</a></li>
+        </ul>
       </div>
     </div>
   </div>

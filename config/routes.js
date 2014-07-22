@@ -22,6 +22,8 @@ module.exports = function (app, passport) {
     failureRedirect: '/login?error=local'
   }));
 
+  app.all("/logout", authController.logout);
+
   // Just to be able to create user to test our app
   app.get('/user/:username/:password', authController.createUser);
 
