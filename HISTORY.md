@@ -1,5 +1,11 @@
 #History
 
+## 0.0.8
+- Added Log Out button
+- Updated to React 0.11 (had to update nested-router to ^0.2.1)
+- Updated gulp-react to 0.5.x, koa-router to 3.2.x
+- Put build package in dev-deps instead of deps
+
 ## 0.0.7
 - Adding react-nested-router in the example
 - React is added with browserify
