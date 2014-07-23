@@ -44,7 +44,7 @@
     "mongoose": "3.9.x",
     "passport-local": "1.0.x",
     "react": "0.11.x",
-    "react-nested-router": "^0.2.1",
+    "react-nested-router": "0.3.x",
     "superagent": "0.18.x",
     "vinyl-source-stream": "0.1.x",
     "whiskers": "0.3.x"

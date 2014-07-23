@@ -22,7 +22,7 @@ var App = React.createClass({
           </ul>
         </div>
         <div className='col-md-10 well'>
-          {this.props.activeRoute}
+          {this.props.activeRouteHandler()}
         </div>
       </div>
     );
