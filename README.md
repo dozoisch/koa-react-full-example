@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/dozoisch/koa-react-full-example.png?label=ready&title=Ready)](https://waffle.io/dozoisch/koa-react-full-example)
 # koa-react-full-example
 
 [![Build Status][travis.img]][travis.url]
