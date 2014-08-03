@@ -3,6 +3,7 @@
 [![Build Status][travis.img]][travis.url]
 [![dependencies][deps.img]][deps.url]
 [![devdependencies][devdeps.img]][devdeps.url]
+[![Tasks][waffle.img]][waffle.url]
 
 Full example using Koa, React, Mongoose, Gulp, Mocha, and on Travis
 
@@ -64,3 +65,5 @@ Updates to come:
 [deps.url]: https://david-dm.org/dozoisch/koa-react-full-example
 [devdeps.img]: https://david-dm.org/dozoisch/koa-react-full-example/dev-status.svg
 [devdeps.url]: https://david-dm.org/dozoisch/koa-react-full-example#info=devDependencies
+[waffle.img]: https://badge.waffle.io/dozoisch/koa-react-full-example.png?label=planned&title=Ready
+[waffle.url]: https://waffle.io/dozoisch/koa-react-full-example
