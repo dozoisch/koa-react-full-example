@@ -11,8 +11,7 @@ module.exports = {
     },
     out: {
       build_js: root + '/build',
-      public_js: root + '/public/js',
-      public_css: root + '/public/css'
+      public: root + '/public',
     },
     toWatch: [root + '/src/**/*.js', root + '/config/*.js', root + '/server.js', root + '/lib/*.js']
   }

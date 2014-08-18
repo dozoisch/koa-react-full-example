@@ -52,10 +52,14 @@
   "devDependencies": {
     "browserify": "4.2.x",
     "browserify-shim": "3.6.x",
+    "envify": "3.0.x",
     "gulp": "3.8.x",
+    "gulp-concat": "2.3.x",
     "gulp-less": "1.3.x",
+    "gulp-minify-css": "0.3.x",
     "gulp-nodemon": "1.0.x",
-    "gulp-react": "0.5.x",
+    "gulp-react": "1.0.x",
+    "gulp-sourcemaps": "1.1.x",
     "mocha": "1.21.x",
     "should": "4.0.x",
     "supertest": "0.13.x"
@@ -65,6 +69,7 @@
       "browserify-shim"
     ]
   },
+  "browserify-shim": {}
   "browserify-shim": {
   }
 }

@@ -1,5 +1,5 @@
 var koaStatic = require('koa-static');
-var session = require('koa-sess');
+var session = require('koa-generic-session');
 var responseTime = require('koa-response-time');
 var logger = require('koa-logger');
 var views = require('co-views');
