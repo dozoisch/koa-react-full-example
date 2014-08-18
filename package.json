@@ -27,24 +27,24 @@
     "node": ">=0.11.9"
   },
   "dependencies": {
-    "bcrypt": "rvagg/node.bcrypt.js#nan",
+    "bcrypt": "0.8.x",
     "co": "3.1.x",
     "co-views": "0.2.x",
-    "koa": "0.8.x",
+    "koa": "0.10.x",
     "koa-bodyparser": "1.0.x",
     "koa-compress": "1.0.x",
     "koa-error": "1.1.x",
+    "koa-generic-session": "1.2.x",
     "koa-logger": "1.2.x",
     "koa-passport": "0.5.x",
     "koa-response-time": "1.0.x",
     "koa-router": "3.2.x",
-    "koa-sess": "0.4.x",
     "koa-static": "1.4.x",
     "lodash": "2.4.x",
     "mongoose": "3.9.x",
     "passport-local": "1.0.x",
     "react": "0.11.x",
-    "react-nested-router": "0.3.x",
+    "react-router": "0.5.x",
     "superagent": "0.18.x",
     "vinyl-source-stream": "0.1.x",
     "whiskers": "0.3.x"
@@ -70,6 +70,4 @@
     ]
   },
   "browserify-shim": {}
-  "browserify-shim": {
-  }
 }
