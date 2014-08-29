@@ -1,6 +1,6 @@
 {
   "name": "koa-react-full-example",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Full example using Koa, React, Passport, Mongoose, Gulp, Mocha",
   "keywords": [
     "koa",
@@ -38,7 +38,7 @@
     "koa-logger": "1.2.x",
     "koa-passport": "0.5.x",
     "koa-response-time": "1.0.x",
-    "koa-router": "3.2.x",
+    "koa-router": "3.3.x",
     "koa-static": "1.4.x",
     "lodash": "2.4.x",
     "mongoose": "3.9.x",
@@ -50,8 +50,8 @@
     "whiskers": "0.3.x"
   },
   "devDependencies": {
-    "browserify": "4.2.x",
-    "browserify-shim": "3.6.x",
+    "browserify": "5.11.x",
+    "browserify-shim": "3.7.x",
     "envify": "3.0.x",
     "gulp": "3.8.x",
     "gulp-concat": "2.3.x",
