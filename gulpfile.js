@@ -36,11 +36,14 @@ gulp.task("copy-js", function () {
 });
 
 gulp.task("app-compile", ["jsx-compile", "copy-js"], function() {
-  return browserify(paths.in.app)
+  return browserify({
+      entries: paths.in.app,
+      debug: true,
+    })
     .require("react")
     .transform(shim)
     .transform(envify)
-    .bundle({ debug: true })
+    .bundle()
     .pipe(source("app.js"))
     .pipe(gulp.dest(paths.out.public));
 });
