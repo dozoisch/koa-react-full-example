@@ -1,5 +1,20 @@
 #History
 
+##0.1.3
+- bump deps
+- updated guilpbuild to not crash on less/jsx errors
+
+##0.1.2
+- Fixed problem with browserify
+
+##0.1.1
+- updated deps
+
+##0.1.0
+- updated deps
+- updated build configuration
+- added waffle badge
+
 ## 0.0.8
 - Added Log Out button
 - Updated to React 0.11 (had to update nested-router to ^0.2.1)
