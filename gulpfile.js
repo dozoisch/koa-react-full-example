@@ -21,12 +21,18 @@ var paths = config.paths;
 // Hack around nodemon, that doesn"t wait for tasks to finish on change
 var nodemon_instance;
 
+function handleStreamError (err) {
+  console.log(err.toString());
+  this.emit("end");
+}
+
 /**
  * Sub-Tasks
  */
 gulp.task("jsx-compile", function () {
   return gulp.src(paths.in.jsx)
   .pipe(react())
+  .on("error", handleStreamError)
   .pipe(gulp.dest(paths.out.build_js));
 });
 
@@ -52,6 +58,7 @@ gulp.task("less-compile", function () {
   return gulp.src(paths.in.less)
     .pipe(sourcemaps.init())
     .pipe(less())
+    .on("error", handleStreamError)
     .pipe(concat("app.css"))
     .pipe(minifyCSS())
     .pipe(sourcemaps.write())
