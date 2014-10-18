@@ -30,7 +30,7 @@
     "bcrypt": "0.8.x",
     "co": "3.1.x",
     "co-views": "0.2.x",
-    "koa": "0.12.x",
+    "koa": "0.13.x",
     "koa-bodyparser": "1.0.x",
     "koa-compress": "1.0.x",
     "koa-error": "1.1.x",
@@ -44,14 +44,14 @@
     "mongoose": "3.9.x",
     "passport-local": "1.0.x",
     "react": "0.11.x",
-    "react-router": "0.7.x",
-    "superagent": "0.19.x",
+    "react-router": "0.9.x",
+    "superagent": "0.20.x",
     "vinyl-source-stream": "1.0.x",
     "whiskers": "0.3.x"
   },
   "devDependencies": {
-    "browserify": "5.12.x",
-    "browserify-shim": "3.7.x",
+    "browserify": "6.1.x",
+    "browserify-shim": "3.8.x",
     "envify": "3.0.x",
     "gulp": "3.8.x",
     "gulp-concat": "2.4.x",
@@ -62,7 +62,7 @@
     "gulp-sourcemaps": "1.2.x",
     "mocha": "1.21.x",
     "should": "4.0.x",
-    "supertest": "0.13.x"
+    "supertest": "0.14.x"
   },
   "browserify": {
     "transform": [
