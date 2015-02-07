@@ -20,17 +20,21 @@
     "url": "https://github.com/dozoisch/koa-react-full-example"
   },
   "scripts": {
-    "start": "NODE_ENV=development gulp dev",
+    "start": "NODE_ENV=development ./node_modules/.bin/nodemon server.js",
+    "hot-dev-server": "webpack-dev-server --content-base webpack-utils/dev-server-public --config webpack-hot-dev-server.config.js --hot --progress --colors --port 2992 --inline",
+    "build": "webpack --config webpack-production.config.js --progress --profile --colors",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --harmony --reporter spec ./test/test-*.js"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=0.12.0",
+    "iojs": ">=1.6.0"
   },
   "dependencies": {
-    "bcrypt": "~0.8.2",
-    "co": "~4.5.1",
+    "bcrypt": "0.8.x",
+    "bootstrap": "~3.3.4",
+    "co": "4.4.x",
     "co-views": "0.3.x",
     "koa": "~0.19.0",
     "koa-bodyparser": "~1.5.0",
@@ -41,9 +45,10 @@
     "koa-passport": "~1.1.5",
     "koa-response-time": "1.0.x",
     "koa-router": "~4.3.2",
-    "koa-static": "1.4.x",
+    "koa-static-cache": "~3.1.0",
     "lodash": "~3.6.0",
     "mongoose": "3.9.x",
+    "nodemon": "~1.3.7",
     "passport-local": "1.0.x",
     "react": "~0.13.1",
     "react-bootstrap": "~0.20.2",
@@ -54,22 +59,23 @@
     "vinyl-source-stream": "1.0.x"
   },
   "devDependencies": {
-    "browserify": "8.1.x",
-    "browserify-shim": "^3.8.2",
-    "envify": "3.2.x",
-    "git-rev": "0.2.x",
-    "gulp": "3.8.x",
-    "gulp-concat": "2.5.x",
-    "gulp-if": "^1.2.5",
-    "gulp-less": "3.0.x",
-    "gulp-minify-css": "0.4.x",
-    "gulp-nodemon": "1.0.x",
-    "gulp-react": "~3.0.1",
-    "gulp-sourcemaps": "1.3.x",
-    "gulp-uglify": "^1.1.0",
-    "mocha": "~2.2.1",
-    "should": "~5.2.0",
-    "supertest": "0.15.x"
-  },
-  "browserify-shim": {}
+    "css-loader": "~0.9.1",
+    "extract-text-webpack-plugin": "~0.5.0",
+    "file-loader": "~0.8.1",
+    "html-loader": "~0.2.3",
+    "jsx-loader": "~0.12.2",
+    "less": "~2.4.0",
+    "less-loader": "~2.2.0",
+    "mocha": "2.1.x",
+    "nodemon": "~1.3.7",
+    "null-loader": "~0.1.1",
+    "react-hot-loader": "~1.2.4",
+    "react-proxy-loader": "~0.3.3",
+    "should": "5.0.x",
+    "style-loader": "~0.9.0",
+    "supertest": "0.15.x",
+    "url-loader": "~0.5.5",
+    "webpack": "~1.7.3",
+    "webpack-dev-server": "~1.8.0"
+  }
 }

@@ -4,5 +4,4 @@ node_js:
   - "iojs"
 services:
   - mongodb
-before_install: npm install -g gulp
-before_script: gulp install
+before_script: npm run build

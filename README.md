@@ -5,7 +5,7 @@
 [![devdependencies][devdeps.img]][devdeps.url]
 [![Tasks][waffle.img]][waffle.url]
 
-Full example using Koa, React, Passport, Mongoose, Gulp, Mocha, and on Travis
+Full example using Koa, React, Passport, Mongoose, Webpack, Mocha, and on Travis
 
 This example contains a MVC pattern that presents a simple counter to the client that increments and decrements a value in the Mongo Database with Mongoose. The UI is all handled with ReactJS. It uses the yield keyword from ES6.
 
@@ -21,29 +21,26 @@ This projects uses bleeding-edge technology. It also uses unstable version of Mo
 
 0. Checkout in a directory
 0. `npm install`
-0. `npm install -g gulp` *(might need sudo)*
-0. `gulp install`
 0. Try it and ensure tests passes with `npm test`
 
 ### Running the project
 
-0. Build and start using `gulp dev`
+To run the project, you need two terminals.
+
+0. In the first terminal run `npm run hot-dev-server`
+0. In the second terminal run `npm start`
 0. Try access `localhost:3000` You should normally get the login page.
 0. Create a user using the sign up page "#/signup". It should log you in automatically and you should be redirected to the counter
 
 ### Build commands
 
-**Build**
+**Static Build**
 
-`gulp` or `gulp install`
-
-**Run Develop**
-
-`npm start` or `gulp dev`
+`npm run build`
 
 **Run Tests**
 
-`gulp && npm test`
+`npm run build && npm test`
 
 ### License
 
@@ -53,10 +50,11 @@ The plugin is under MIT license, please see the LICENSE file provided with the m
 
 Updates to come:
 
- - Error handling
+ - Server side rendering with prod webpack config
+ - Description of some design choices
  - More in-depth React-Koa example
  - Code coverage
- - Webpack
+ - Error handling
 
 [travis.img]: https://api.travis-ci.org/dozoisch/koa-react-full-example.svg
 [travis.url]: https://travis-ci.org/dozoisch/koa-react-full-example
