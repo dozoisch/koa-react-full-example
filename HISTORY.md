@@ -1,5 +1,11 @@
 #History
 
+##0.2.0
+- Updated to React 0.12
+- Bumped all deps to their most recent version (inluding co and the new co.wrap of 4.x)
+- New layout that has less duplication
+- Added Version in footer with link to changelog
+
 ##0.1.3
 - bump deps
 - updated guilpbuild to not crash on less/jsx errors
