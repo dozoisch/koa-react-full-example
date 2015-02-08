@@ -12,6 +12,7 @@ var IndexPage = require("./pages/index");
 var NotFoundPage = require("./pages/notfound");
 var NullPage = require("./pages/null");
 var SignInPage = require("./pages/signin");
+var SignUpPage = require("./pages/signup");
 var SignOut = require("./pages/signout");
 
 var container = document.getElementById("content");
@@ -58,6 +59,7 @@ var routes = (
     <Route name="null-page" path="/null" handler={NullPage} />
     <Route name="profile" path="/profile" handler={NullPage} />
     <Route name="sign-in" path="/signin" handler={SignInPage} />
+    <Route name="sign-up" path="/signup" handler={SignUpPage} />
     <Route name="sign-out" path="/signout" handler={SignOut} />
     <NotFoundRoute handler={NotFoundPage} />
   </Route>

@@ -56,7 +56,13 @@ var AppNavbar = React.createClass({
         </Nav>
       );
     }
-    return null;
+    return (
+      <Nav right eventKey={0}>
+        <NavItemLink eventKey={1} to="sign-up">
+           <Glyphicon glyph="user" /> Sign up
+        </NavItemLink>
+      </Nav>
+    );
   },
   render: function () {
     return (

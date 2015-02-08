@@ -24,9 +24,7 @@ module.exports = function (app, passport) {
   app.post("/auth", authController.signIn);
 
   app.all("/signout", authController.signOut);
-
-  // Just to be able to create user to test our app
-  app.get("/user/:username/:password", authController.createUser);
+  app.post("/signup", authController.createUser);
 
   // secured routes
   app.get("/value", secured, countController.getCount);

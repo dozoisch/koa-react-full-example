@@ -1,8 +1,6 @@
 var React = require("react");
 var Router = require("react-router");
 
-
-
 var NotFound = React.createClass({
   displayName: "NotFoundPage",
   mixins: [Router.State],

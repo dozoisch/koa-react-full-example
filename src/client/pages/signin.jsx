@@ -1,6 +1,8 @@
 var React = require("react");
 var Router = require("react-router");
 
+var Link = Router.Link;
+
 var Jumbotron = require("react-bootstrap/Jumbotron");
 var Row = require("react-bootstrap/Row");
 var Col = require("react-bootstrap/Col");
@@ -54,9 +56,10 @@ var SignIn = React.createClass({
       this.replaceWith("index");
     }
   },
-
+  renderErrorBlock: function () {
+    return this.state.error ? <p className="help-block">Bad login information</p> : null;
+  },
   render: function () {
-    var errors = this.state.error ? <p className="help-block">Bad login information</p> : "";
     return (
       <div>
         <h1>Sign In</h1>
@@ -68,9 +71,14 @@ var SignIn = React.createClass({
             <form onSubmit={this.handleSubmit} className={this.state.error ? "has-error" : null}>
               <Input type="text" ref="username" placeholder="username" label="Username" />
               <Input type="password" ref="password" placeholder="password" label="Password" />
-              <Button type="submit" bsStyle="success"  className="pull-right">Sign In</Button>
-              {errors}
+              <Button type="submit" bsStyle="success" className="pull-right">Sign In</Button>
+              {this.renderErrorBlock()}
             </form>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6} mdOffset={3}>
+            <p>Don't have an account? You can <Link to="sign-up">sign up</Link></p>
           </Col>
         </Row>
       </div>
