@@ -2,19 +2,12 @@ body {
   padding-top: 70px;
 }
 
-/** Sidebar */
-
-.nav-pills > li {
-  & > a.active,
-  & > a.active:hover,
-  & > a.active:focus {
-    color: #eee;
-    background-color: #428bca;
-  }
-}
-
 .navbar-collapse {
   overflow: hidden;
+}
+
+.well pre {
+  background-color: #fff;
 }
 
 tfoot {
@@ -22,16 +15,6 @@ tfoot {
 }
 
 /** Footer */
-@footer: 45px;
-.content-wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -@footer; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push-footer {
-  height: @footer; /* .push must be the same height as .footer */
-}
 .footer {
   color: #999;
   text-align: center;

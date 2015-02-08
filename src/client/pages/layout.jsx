@@ -3,6 +3,7 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
+var Jumbotron = require("react-bootstrap/Jumbotron");
 var Nav = require("react-bootstrap/Nav");
 var Row = require("react-bootstrap/Row");
 var Col = require("react-bootstrap/Col");
@@ -15,7 +16,13 @@ var AuthStore = require("../stores/auth");
 var Layout = React.createClass({
   render: function() {
     if (!AuthStore.isLoggedIn()) {
-      return <RouteHandler />;
+      return (
+        <Jumbotron>
+          <div className="container">
+            <RouteHandler />
+          </div>
+        </Jumbotron>
+      );
     }
     return (
       <div className="container">
