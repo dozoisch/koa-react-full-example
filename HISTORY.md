@@ -1,5 +1,8 @@
 #History
 
+##0.3.2
+- Added sign up page
+
 ##0.3.1
 - Added Not Found Page
 - Better Layout Management
