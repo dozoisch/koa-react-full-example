@@ -43,8 +43,8 @@
     "lodash": "3.1.x",
     "mongoose": "3.9.x",
     "passport-local": "1.0.x",
-    "react": "0.11.x",
-    "react-router": "0.9.x",
+    "react": "0.12.x",
+    "react-router": "0.11.x",
     "superagent": "0.21.x",
     "swig": "1.4.x",
     "vinyl-source-stream": "1.0.x"
