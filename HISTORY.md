@@ -1,5 +1,9 @@
 #History
 
+##0.3.1
+- Added Not Found Page
+- Better Layout Management
+
 ##0.3.0
 - Now uses a real single pager
 - Lot of refactor of the way the app works. It's now using a real authentication flow
