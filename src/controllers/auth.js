@@ -1,5 +1,10 @@
+var buildInfo = require('../../build-info.json');
+
 exports.login = function *() {
-  this.body = yield this.render('auth');
+  this.body = yield this.render('auth', {
+    version: buildInfo.version,
+    commit: buildInfo.commit,
+  });
 };
 
 exports.logout = function *() {

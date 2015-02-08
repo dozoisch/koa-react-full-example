@@ -1,0 +1,46 @@
+{% set sitename="React Koa Gulp Mongoose Mocha Demo" %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{{sitename}}{% endblock %}</title>
+  {% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% endblock %}
+  {% block css %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/app.css">
+  {% endblock %}
+</head>
+<body>
+{% block navbar %}
+  <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="nabar-header">
+        <a class="navbar-brand" href="/" >{{sitename}}</a>
+      </div>
+      {# needs bootstrap.js and jQuery... <div class="navbar-collapse collapse"> #}
+      <ul id="navbarmenu" class="nav navbar-nav navbar-right">
+        {% block navlinks %}
+        {% endblock %}
+      </ul>
+      {# </div> #}
+    </div>
+  </nav>
+{% endblock %}
+<div class="content-wrapper">
+{% block content %}
+{% endblock %}
+<div class="push-footer" ></div>
+</div>
+<div class="footer">
+  {% block footer %}
+    <p>
+      <b>Version</b> - {{version}} #{{commit}} -
+      <a href={{"https://raw.githubusercontent.com/dozoisch/koa-react-full-example/v" + version +"/HISTORY.md"}}>Changelog</a>
+    <p>
+  {% endblock %}
+</div>
+{% block script %}
+{% endblock %}
+</body>
+</html>

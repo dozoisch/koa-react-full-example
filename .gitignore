@@ -27,3 +27,4 @@ node_modules
 #Compiled sources
 public
 build
+build-info.json

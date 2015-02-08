@@ -7,7 +7,7 @@ exports.getCount = function *() {
   if(!count) {
     count = new Count();
   }
-  this.body = {count: count.value};
+  this.body = { count: count.value };
 };
 
 exports.increment = function *() {
@@ -18,7 +18,7 @@ exports.increment = function *() {
   ++count.value;
 
   yield count.save();
-  this.body = {count: count.value};
+  this.body = { count: count.value };
 };
 
 exports.decrement = function *() {
@@ -29,5 +29,5 @@ exports.decrement = function *() {
   --count.value;
 
   yield count.save();
-  this.body = {count: count.value};
+  this.body = { count: count.value };
 };
