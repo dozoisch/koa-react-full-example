@@ -1,5 +1,11 @@
 #History
 
+##0.3.0
+- Now uses a real single pager
+- Lot of refactor of the way the app works. It's now using a real authentication flow
+- Added react-bootstrap
+- Added some tests
+
 ##0.2.0
 - Updated to React 0.12
 - Bumped all deps to their most recent version (inluding co and the new co.wrap of 4.x)

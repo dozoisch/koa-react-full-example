@@ -1,6 +1,6 @@
 {
   "name": "koa-react-full-example",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Full example using Koa, React, Passport, Mongoose, Gulp, Mocha",
   "keywords": [
     "koa",
@@ -44,7 +44,9 @@
     "mongoose": "3.9.x",
     "passport-local": "1.0.x",
     "react": "0.12.x",
+    "react-bootstrap": "^0.13.3",
     "react-router": "0.11.x",
+    "react-router-bootstrap": "^0.8.3",
     "superagent": "0.21.x",
     "swig": "1.4.x",
     "vinyl-source-stream": "1.0.x"
