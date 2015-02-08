@@ -11,7 +11,7 @@ var User = mongoose.model('User');
  */
 const CREDENTIALS = { u: 'test@email.com', p:'123123123' };
 
-exports.LOGIN_URL = '/login';
+exports.LOGIN_URL = '/auth';
 
 /**
  * Utils
@@ -27,14 +27,12 @@ exports.signAgent = function (agent, done) {
   .set('Content-Type', 'application/json')
   .send({ username: CREDENTIALS.u, password: CREDENTIALS.p })
   .redirects(false)
-  .expect(302)
+  .expect(200)
   .end(function (err, res) {
     if (err) return done(err);
-    try {
-      res.headers.location.should.equal('/');
-      done();
-    } catch (err) {
-      done(err);
-    }
+    should.exist(res.body);
+    should.exist(res.body.user);
+    should.exist(res.body.user.username);
+    done();
   });
 };

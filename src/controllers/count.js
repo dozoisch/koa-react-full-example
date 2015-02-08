@@ -4,7 +4,7 @@ var Count = mongoose.model('Count');
 
 exports.getCount = function *() {
   var count = yield Count.findOne().exec();
-  if(!count) {
+  if (!count) {
     count = new Count();
   }
   this.body = { count: count.value };
@@ -12,7 +12,7 @@ exports.getCount = function *() {
 
 exports.increment = function *() {
   var count = yield Count.findOne().exec();
-  if(!count) {
+  if (!count) {
     count = new Count();
   }
   ++count.value;
@@ -23,7 +23,7 @@ exports.increment = function *() {
 
 exports.decrement = function *() {
   var count = yield Count.findOne().exec();
-  if(!count) {
+  if (!count) {
     count = new Count();
   }
   --count.value;

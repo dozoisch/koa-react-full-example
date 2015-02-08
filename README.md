@@ -28,8 +28,8 @@ This projects uses bleeding-edge technology. It also uses unstable version of Mo
 ### Running the project
 
 0. Build and start using `gulp dev`
-0. Try access `localhost:3000` you should be redirected to `/login` because `/` is secured
-0. Create a user using the url `localhost:3000/user/:username/:password`. This url doesn't really have a page as it is really just for creating a "testing" user. It might be updated in the future. It should redirect to login page with `usercreate=1` on success
+0. Try access `localhost:3000` You should normally get the login page.
+0. Create a user using the url `localhost:3000/user/:username/:password`. This url doesn't really have a page as it is really just for creating a "testing" user. It might be updated in the future. It should redirect to login page with `usercreate=1` on success.
 0. Login your new created user, you should be redirected to the page with the counter!
 
 

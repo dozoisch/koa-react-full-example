@@ -1,25 +1,40 @@
-var buildInfo = require('../../build-info.json');
+var passport = require("koa-passport");
 
-exports.login = function *() {
-  this.body = yield this.render('auth', {
-    version: buildInfo.version,
-    commit: buildInfo.commit,
-  });
+exports.signIn = function *() {
+  var ctx = this;
+  yield* passport.authenticate("local", function*(err, user, info) {
+    if (err) {
+      throw err;
+    }
+    if (user === false) {
+      ctx.status = 401;
+    } else {
+      yield ctx.login(user);
+      ctx.body = { user: user };
+    }
+  }).call(this);
 };
 
-exports.logout = function *() {
+exports.getCurrentUser = function *() {
+  if (this.passport.user) {
+    this.body = { user: this.passport.user };
+  }
+  this.status = 200;
+};
+
+exports.signOut = function *() {
   this.logout();
   this.session = null;
-  this.redirect("/");
+  this.status = 204;
 };
 
 exports.createUser = function *() {
-  var User = require('mongoose').model('User');
+  var User = require("mongoose").model("User");
   try {
     var user = new User({ username: this.params.username, password: this.params.password });
     user = yield user.save();
-    this.redirect('/login?usercreated=1');
+    this.redirect("/?usercreated=1");
   } catch (err) {
-    this.redirect('/login?usercreated=0');
+    this.redirect("/?usercreated=0");
   }
 };

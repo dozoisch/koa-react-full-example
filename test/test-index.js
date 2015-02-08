@@ -11,34 +11,9 @@ var authHelper = require('./middlewares/authenticator');
 var co = require('co');
 
 describe('Index', function () {
-
-  before(co.wrap(function *() {
-    yield authHelper.createUser();
-  }));
-
-  describe('Anonymous calls', function () {
-    it('should return 302 to /login', function (done) {
-      request.get('/')
-      .expect(302)
-      .end(function (err, res) {
-        if(err) return done(err);
-        res.headers.location.should.equal('/login');
-        done();
-      });
-    });
+  it('should render the page', function (done) {
+    request.get('/')
+    .expect(200)
+    .end(done);
   });
-
-  describe('Auth calls', function () {
-    before(function (done) {
-      authHelper.signAgent(request, done);
-    });
-
-    it('should render the page', function (done) {
-      request.get('/')
-      .expect(200)
-      .end(done);
-    });
-  });
-
-  after(function (done) { databaseHelper.dropDatabase(done); });
 });

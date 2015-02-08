@@ -1,8 +1,8 @@
-var router = require('koa-router');
+var router = require("koa-router");
 
-var countController = require('../src/controllers/count');
-var indexController = require('../src/controllers/index');
-var authController = require('../src/controllers/auth');
+var countController = require("../src/controllers/count");
+var indexController = require("../src/controllers/index");
+var authController = require("../src/controllers/auth");
 
 var secured = function *(next) {
   if (this.isAuthenticated()) {
@@ -16,27 +16,20 @@ module.exports = function (app, passport) {
   // register functions
   app.use(router(app));
 
-  app.get('/login', authController.login);
-  app.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login?error=local'
-  }));
-
-  app.all("/logout", authController.logout);
-
-  // Just to be able to create user to test our app
-  app.get('/user/:username/:password', authController.createUser);
-
-  app.get('/', function *() {
-    if (this.isAuthenticated()) {
-      yield indexController.index.apply(this);
-    } else {
-      this.redirect('/login');
-    }
+  app.get("/", function *() {
+    yield indexController.index.apply(this);
   });
 
+  app.get("/auth", authController.getCurrentUser);
+  app.post("/auth", authController.signIn);
+
+  app.all("/signout", authController.signOut);
+
+  // Just to be able to create user to test our app
+  app.get("/user/:username/:password", authController.createUser);
+
   // secured routes
-  app.get('/value', secured, countController.getCount);
-  app.get('/inc', secured, countController.increment);
-  app.get('/dec', secured, countController.decrement);
+  app.get("/value", secured, countController.getCount);
+  app.get("/inc", secured, countController.increment);
+  app.get("/dec", secured, countController.decrement);
 };

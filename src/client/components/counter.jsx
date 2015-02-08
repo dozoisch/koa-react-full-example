@@ -1,11 +1,10 @@
-/** @jsx React.DOM */
-'use strict';
-var React = require('react');
-var request = require('superagent');
+"use strict";
+var React = require("react");
+var request = require("superagent");
 
 var get = function (url, cb) {
   request.get(url)
-  .set('Content-Type', 'application/json')
+  .set("Content-Type", "application/json")
   .end(cb);
 }
 
@@ -14,19 +13,19 @@ module.exports = React.createClass({
     return { count : this.props.initialCount || 0 };
   },
   componentWillMount: function () {
-    get('/value', function (res) {
+    get("/value", function (res) {
       this.setState({count: res.body.count});
     }.bind(this));
   },
   onClickInc: function (event) {
     event.preventDefault();
-    get('/inc', function (res) {
+    get("/inc", function (res) {
       this.setState({count: res.body.count});
     }.bind(this));
   },
   onClickDec: function (event) {
     event.preventDefault();
-    get('/dec', function (res) {
+    get("/dec", function (res) {
       this.setState({count: res.body.count});
     }.bind(this));
   },

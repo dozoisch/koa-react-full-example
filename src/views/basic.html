@@ -1,0 +1,23 @@
+{% set sitename="React Koa Gulp Mongoose Mocha Demo" %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{sitename}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<div id="content-wrapper" />
+  <div id="content"></div>
+  <div class="push-footer"></div>
+</div>
+<div class="footer">
+  <p>
+    <b>Version</b> - {{version}} #{{commit}} -
+    <a href={{"https://raw.githubusercontent.com/dozoisch/koa-react-full-example/v" + version +"/HISTORY.md"}}>Changelog</a>
+  <p>
+</div>
+  <script type="text/javascript" src="/app.js"></script>
+</body>
+</html>
