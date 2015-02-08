@@ -16,16 +16,13 @@ describe('Count', function () {
   var CountModel = mongoose.model('Count');
   var gCount = 1;
 
-  before(function (done) {
-    co(function *() {
-
-        var c = new CountModel({value: gCount});
-        yield c.save(),
-        yield authHelper.createUser();
-
-    })(done);
-
-  });
+  before(co.wrap(function *() {
+    var c = new CountModel({value: gCount});
+    yield [
+      c.save(),
+      authHelper.createUser()
+    ];
+  }));
 
   describe('Anonymous calls', function () {
     it('should return 401 /value', function (done) {

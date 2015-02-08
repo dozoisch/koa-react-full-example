@@ -9,7 +9,7 @@ var Models = [
 exports.dropDatabase = function (cb) {
   co(function *() {
     yield Models.map(dropCollection);
-  })(cb);
+  }).then(cb);
 };
 
 var dropCollection = function (Model) {

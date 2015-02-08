@@ -32,7 +32,7 @@ UserSchema.pre('save', function (done) {
     return done();
   }
 
-  co(function*() {
+  co.wrap(function*() {
     try {
       var salt = yield bcrypt.genSalt();
       var hash = yield bcrypt.hash(this.password, salt);
@@ -42,7 +42,7 @@ UserSchema.pre('save', function (done) {
     catch (err) {
       done(err);
     }
-  }).call(this, done);
+  }).call(this).then(done);
 });
 
 /**
@@ -60,8 +60,9 @@ UserSchema.statics.passwordMatches = function *(username, password) {
   var user = yield this.findOne({ 'username': username.toLowerCase() }).exec();
   if (!user) throw new Error('User not found');
 
-  if (yield user.comparePassword(password))
+  if (yield user.comparePassword(password)) {
     return user;
+  }
 
   throw new Error('Password does not match');
 };

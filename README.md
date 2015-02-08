@@ -13,7 +13,7 @@ This projects uses bleeding-edge technology. It also uses unstable version of Mo
 
 ### Prerequisite
 
-* [NodeJS](http://nodejs.org/download/) > 0.11.9
+* [NodeJS](http://nodejs.org/download/) > 0.11.16 || 0.12
 * [npm](https://www.npmjs.org/)
 * [MongoDB](http://www.mongodb.org/downloads)
 

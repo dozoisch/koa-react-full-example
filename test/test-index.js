@@ -12,11 +12,9 @@ var co = require('co');
 
 describe('Index', function () {
 
-  before(function (done) {
-    co(function *() {
-        yield authHelper.createUser();
-    })(done);
-  });
+  before(co.wrap(function *() {
+    yield authHelper.createUser();
+  }));
 
   describe('Anonymous calls', function () {
     it('should return 302 to /login', function (done) {

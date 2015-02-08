@@ -29,7 +29,7 @@ exports.signAgent = function (agent, done) {
   .redirects(false)
   .expect(302)
   .end(function (err, res) {
-    if(err) done(err);
+    if (err) return done(err);
     try {
       res.headers.location.should.equal('/');
       done();
