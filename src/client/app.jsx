@@ -9,6 +9,7 @@ var Navbar = require("./components/navbar");
 var Layout = require("./pages/layout");
 
 var IndexPage = require("./pages/index");
+var NotFoundPage = require("./pages/notfound");
 var NullPage = require("./pages/null");
 var SignInPage = require("./pages/signin");
 var SignOut = require("./pages/signout");
@@ -58,7 +59,7 @@ var routes = (
     <Route name="profile" path="/profile" handler={NullPage} />
     <Route name="sign-in" path="/signin" handler={SignInPage} />
     <Route name="sign-out" path="/signout" handler={SignOut} />
-    <NotFoundRoute handler={IndexPage} />
+    <NotFoundRoute handler={NotFoundPage} />
   </Route>
 );
 
