@@ -1,5 +1,10 @@
 #History
 
+##0.3.3
+- Updated deps
+- Removed 0.11 from the build
+- Prepared for react-bootrstrap 0.15
+
 ##0.3.2
 - Added sign up page
 
