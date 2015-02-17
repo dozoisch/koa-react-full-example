@@ -1,9 +1,9 @@
 var React = require("react");
 var Router = require("react-router");
 
-var Col = require("react-bootstrap/Col");
-var Input = require("react-bootstrap/Input");
-var Button = require("react-bootstrap/Button");
+var Col = require("react-bootstrap").Col;
+var Input = require("react-bootstrap").Input;
+var Button = require("react-bootstrap").Button;
 
 var AuthStore = require("../stores/auth");
 

@@ -4,9 +4,9 @@ var PropTypes = React.PropTypes;
 
 var Link = require("react-router").Link;
 
-var Navbar = require("react-bootstrap/Navbar");
-var Nav = require("react-bootstrap/Nav");
-var Glyphicon = require("react-bootstrap/Glyphicon");
+var Navbar = require("react-bootstrap").Navbar;
+var Nav = require("react-bootstrap").Nav;
+var Glyphicon = require("react-bootstrap").Glyphicon;
 
 var ReactRouterBootstrap = require('react-router-bootstrap');
 var NavItemLink = ReactRouterBootstrap.NavItemLink;

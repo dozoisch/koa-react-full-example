@@ -3,11 +3,11 @@ var Router = require("react-router");
 
 var Link = Router.Link;
 
-var Jumbotron = require("react-bootstrap/Jumbotron");
-var Row = require("react-bootstrap/Row");
-var Col = require("react-bootstrap/Col");
-var Input = require("react-bootstrap/Input");
-var Button = require("react-bootstrap/Button");
+var Jumbotron = require("react-bootstrap").Jumbotron;
+var Row = require("react-bootstrap").Row;
+var Col = require("react-bootstrap").Col;
+var Input = require("react-bootstrap").Input;
+var Button = require("react-bootstrap").Button;
 
 var AuthStore = require("../stores/auth");
 

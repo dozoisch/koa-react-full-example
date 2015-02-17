@@ -3,10 +3,10 @@ var Router = require("react-router");
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 
-var Jumbotron = require("react-bootstrap/Jumbotron");
-var Nav = require("react-bootstrap/Nav");
-var Row = require("react-bootstrap/Row");
-var Col = require("react-bootstrap/Col");
+var Jumbotron = require("react-bootstrap").Jumbotron;
+var Nav = require("react-bootstrap").Nav;
+var Row = require("react-bootstrap").Row;
+var Col = require("react-bootstrap").Col;
 
 var ReactRouterBootstrap = require('react-router-bootstrap');
 var NavItemLink = ReactRouterBootstrap.NavItemLink;
