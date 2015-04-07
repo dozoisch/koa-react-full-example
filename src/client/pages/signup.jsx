@@ -1,15 +1,17 @@
 var React = require("react");
-var Router = require("react-router");
 
-var Col = require("react-bootstrap").Col;
-var Input = require("react-bootstrap").Input;
-var Button = require("react-bootstrap").Button;
+var Col = require("react-bootstrap/lib/Col");
+var Input = require("react-bootstrap/lib/Input");
+var Button = require("react-bootstrap/lib/Button");
 
 var AuthStore = require("../stores/auth");
 
 var SignUp = React.createClass({
   displayName: "SignUp",
-  mixins: [Router.Navigation],
+
+  contextTypes: {
+    router: React.PropTypes.func
+  },
 
   getInitialState: function() {
     return {};
@@ -25,7 +27,7 @@ var SignUp = React.createClass({
         if (err || !user) {
           return this.setState({ error: "Could not Create the User" });
         }
-        this.replaceWith("index");
+        this.context.router.replaceWith("index");
       }.bind(this));
     }
   },

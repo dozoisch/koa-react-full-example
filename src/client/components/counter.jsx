@@ -13,19 +13,19 @@ module.exports = React.createClass({
     return { count : this.props.initialCount || 0 };
   },
   componentWillMount: function () {
-    get("/value", function (res) {
+    get("/value", function (err, res) {
       this.setState({count: res.body.count});
     }.bind(this));
   },
   onClickInc: function (event) {
     event.preventDefault();
-    get("/inc", function (res) {
+    get("/inc", function (err, res) {
       this.setState({count: res.body.count});
     }.bind(this));
   },
   onClickDec: function (event) {
     event.preventDefault();
-    get("/dec", function (res) {
+    get("/dec", function (err, res) {
       this.setState({count: res.body.count});
     }.bind(this));
   },

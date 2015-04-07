@@ -3,17 +3,20 @@ var Router = require("react-router");
 
 var Link = Router.Link;
 
-var Jumbotron = require("react-bootstrap").Jumbotron;
-var Row = require("react-bootstrap").Row;
-var Col = require("react-bootstrap").Col;
-var Input = require("react-bootstrap").Input;
-var Button = require("react-bootstrap").Button;
+var Jumbotron = require("react-bootstrap/lib/Jumbotron");
+var Row = require("react-bootstrap/lib/Row");
+var Col = require("react-bootstrap/lib/Col");
+var Input = require("react-bootstrap/lib/Input");
+var Button = require("react-bootstrap/lib/Button");
 
 var AuthStore = require("../stores/auth");
 
 var SignIn = React.createClass({
   displayName: "SignInPage",
-  mixins: [ Router.Navigation ],
+
+  contextTypes: {
+    router: React.PropTypes.func
+  },
 
   statics: {
     attemptedTransition: null
@@ -53,7 +56,7 @@ var SignIn = React.createClass({
       SignIn.attemptedTransition = null;
       transition.retry();
     } else {
-      this.replaceWith("index");
+      this.context.router.replaceWith("index");
     }
   },
   renderErrorBlock: function () {
