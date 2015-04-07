@@ -1,4 +1,5 @@
-var koaStatic = require("koa-static");
+var path = require("path");
+var serve = require("koa-static-cache");
 var session = require("koa-generic-session");
 var responseTime = require("koa-response-time");
 var logger = require("koa-logger");
@@ -11,12 +12,15 @@ module.exports = function (app, config, passport) {
   if(!config.app.keys) throw new Error("Please add session secret key in the config file!");
   app.keys = config.app.keys;
 
-  if(config.app.env != "test") {
+  if(config.app.env !== "test") {
     app.use(logger());
   }
 
   app.use(errorHandler());
-  app.use(koaStatic(config.app.root + "/public"));
+
+  if (config.app.env === "production") {
+    app.use(serve(path.join(config.app.root, "build", "public"), { prefix: "/_assets" }));
+  }
 
   app.use(session({
     key: "koareactfullexample.sid",

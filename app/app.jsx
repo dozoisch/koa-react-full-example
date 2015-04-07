@@ -19,6 +19,8 @@ var container = document.getElementById("content");
 
 var AuthStore = require("./stores/auth");
 
+require("./less/main.less");
+
 var App = React.createClass({
   displayName: "App",
 
