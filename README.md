@@ -53,9 +53,10 @@ The plugin is under MIT license, please see the LICENSE file provided with the m
 
 Updates to come:
 
- - Description of some design choices
  - Error handling
  - More in-depth React-Koa example
+ - Code coverage
+ - Webpack
 
 [travis.img]: https://api.travis-ci.org/dozoisch/koa-react-full-example.svg
 [travis.url]: https://travis-ci.org/dozoisch/koa-react-full-example
