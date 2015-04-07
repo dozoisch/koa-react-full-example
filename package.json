@@ -1,6 +1,6 @@
 {
   "name": "koa-react-full-example",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Full example using Koa, React, Passport, Mongoose, Gulp, Mocha",
   "keywords": [
     "koa",

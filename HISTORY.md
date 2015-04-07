@@ -1,5 +1,11 @@
 #History
 
+##0.4.0
+- Dropped Gulp for Webpack
+- Renamed client/src to app
+- Added iojs to build targets
+- Bump deps
+
 ##0.3.3
 - Updated deps
 - Removed 0.11 from the build
