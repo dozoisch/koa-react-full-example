@@ -33,7 +33,7 @@ module.exports = function(options) {
   ];
   var modulesDirectories = ["node_modules"];
   var extensions = ["", ".js", ".jsx"];
-  var root = path.join(__dirname, "src", "client","app");
+  var root = path.join(__dirname, "app","app");
   var publicPath = options.devServer ?
     "//localhost:2992/_assets/" :
     "/_assets/";
@@ -115,7 +115,7 @@ module.exports = function(options) {
   }
 
   return {
-    entry: { main: options.prerender ? "./config/prerender" : "./src/client/app" },
+    entry: { main: options.prerender ? "./config/prerender" : "./app/app" },
     output: output,
     target: options.prerender ? "node" : "web",
     module: {
