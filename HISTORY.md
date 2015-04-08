@@ -1,5 +1,9 @@
 #History
 
+##0.4.1
+- bump deps
+- added npmignore
+
 ##0.4.0
 - Dropped Gulp for Webpack
 - Renamed client/src to app
