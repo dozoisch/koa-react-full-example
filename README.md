@@ -21,7 +21,7 @@ This projects uses bleeding-edge technology. It also uses unstable version of Mo
 
 0. Checkout in a directory
 0. `npm install`
-0. Try it and ensure tests passes with `npm test`
+0. Try it and ensure tests pass with `npm run build && npm test`
 
 ### Running the project
 
