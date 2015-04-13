@@ -1,5 +1,8 @@
 #History
 
+##0.4.2
+- dev-server-public/index now has an useful message
+
 ##0.4.1
 - bump deps
 - added npmignore
