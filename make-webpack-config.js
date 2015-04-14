@@ -8,20 +8,20 @@ var loadersByExtension = require("./webpack-utils/loaders-by-extension");
 
 module.exports = function(options) {
   var loaders = {
-    "jsx": ["react-hot-loader", "jsx-loader?harmony"],
-    "json": "json-loader",
-    "json5": "json5-loader",
-    "txt": "raw-loader",
+    jsx: ["react-hot-loader", "jsx-loader?harmony"],
+    json: "json-loader",
+    json5: "json5-loader",
+    txt: "raw-loader",
     "png|jpg|jpeg|gif|svg": "url-loader?limit=10000",
     "woff|woff2": "url-loader?limit=100000",
     "ttf|eot": "file-loader",
     "wav|mp3": "file-loader",
-    "html": "html-loader",
+    html: "html-loader",
     "md|markdown": ["html-loader", "markdown-loader"],
   };
   var stylesheetLoaders = {
-    "css": "css-loader",
-    "less": "css-loader!less-loader",
+    css: "css-loader",
+    less: "css-loader!less-loader",
   };
   var alias = {
   };

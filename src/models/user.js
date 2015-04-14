@@ -49,7 +49,7 @@ UserSchema.methods.comparePassword = function *(candidatePassword) {
  */
 
 UserSchema.statics.passwordMatches = function *(username, password) {
-  var user = yield this.findOne({ "username": username.toLowerCase() }).exec();
+  var user = yield this.findOne({ username: username.toLowerCase() }).exec();
   if (!user) {
     throw new Error("User not found");
   }

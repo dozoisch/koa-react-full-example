@@ -20,6 +20,7 @@
     "no-unused-vars": [1, { "vars": "all", "args": "none" }],
     "no-undef": 1,
     "no-var": 0,
+    "quote-props": [2, "as-needed"],
     "quotes": [2, "double"],
     "react/display-name": 0,
     "react/jsx-uses-react": 1,
