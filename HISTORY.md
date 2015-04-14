@@ -1,5 +1,11 @@
 #History
 
+##0.4.3
+- Preparing ground for Babel ES6 switch
+- Added eslint
+- Updated to mongoose 4.0
+- Bump deps
+
 ##0.4.2
 - dev-server-public/index now has an useful message
 
