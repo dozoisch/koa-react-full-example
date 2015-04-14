@@ -114,14 +114,12 @@ module.exports = function(options) {
       new webpack.NoErrorsPlugin()
     );
   }
-  var loadersArray = loadersByExtension(loaders).concat(loadersByExtension(stylesheetLoaders));
-  console.log(loadersArray);
   return {
     entry: { main: options.prerender ? "./config/prerender" : "./app/app" },
     output: output,
     target: options.prerender ? "node" : "web",
     module: {
-      loaders: loadersArray,
+      loaders: loadersByExtension(loaders).concat(loadersByExtension(stylesheetLoaders)),
     },
     devtool: options.devtool,
     debug: options.debug,
