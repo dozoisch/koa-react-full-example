@@ -47,7 +47,7 @@
     "koa-router": "~4.3.2",
     "koa-static-cache": "~3.1.0",
     "lodash": "~3.6.0",
-    "mongoose": "3.9.x",
+    "mongoose": "~4.0.1",
     "passport-local": "1.0.x",
     "react": "~0.13.1",
     "react-bootstrap": "~0.20.2",
