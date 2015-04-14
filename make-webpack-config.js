@@ -8,7 +8,10 @@ var loadersByExtension = require("./webpack-utils/loaders-by-extension");
 
 module.exports = function(options) {
   var loaders = {
-    jsx: ["react-hot-loader", "jsx-loader?harmony"],
+    "js|jsx": {
+      loaders: ["react-hot-loader", "babel?optional=es7.objectRestSpread"],
+      exclude: /node_modules/,
+    },
     json: "json-loader",
     json5: "json5-loader",
     txt: "raw-loader",
@@ -111,13 +114,14 @@ module.exports = function(options) {
       new webpack.NoErrorsPlugin()
     );
   }
-
+  var loadersArray = loadersByExtension(loaders).concat(loadersByExtension(stylesheetLoaders));
+  console.log(loadersArray);
   return {
     entry: { main: options.prerender ? "./config/prerender" : "./app/app" },
     output: output,
     target: options.prerender ? "node" : "web",
     module: {
-      loaders: loadersByExtension(loaders).concat(loadersByExtension(stylesheetLoaders))
+      loaders: loadersArray,
     },
     devtool: options.devtool,
     debug: options.debug,

@@ -14,7 +14,7 @@ module.exports = React.createClass({
   },
   componentWillMount: function () {
     get("/value", function (err, res) {
-      this.setState({count: res.body.count});
+      this.setState({ count: res.body.count });
     }.bind(this));
   },
   onClickInc: function (event) {
