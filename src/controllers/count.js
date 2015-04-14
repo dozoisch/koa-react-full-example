@@ -1,6 +1,6 @@
-//'use strict'; // cannot use 'use strict' with yield
-var mongoose = require('mongoose');
-var Count = mongoose.model('Count');
+"use strict";
+var mongoose = require("mongoose");
+var Count = mongoose.model("Count");
 
 exports.getCount = function *() {
   var count = yield Count.findOne().exec();

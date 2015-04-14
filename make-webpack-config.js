@@ -1,10 +1,10 @@
+"use strict";
 var path = require("path");
 var fs = require("fs");
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var loadersByExtension = require("./webpack-utils/loaders-by-extension");
-var joinEntry = require("./webpack-utils/join-entry");
 
 module.exports = function(options) {
   var loaders = {
@@ -22,18 +22,17 @@ module.exports = function(options) {
   var stylesheetLoaders = {
     "css": "css-loader",
     "less": "css-loader!less-loader",
-  }
-  var additionalLoaders = [
-  ];
+  };
   var alias = {
   };
   var aliasLoader = {
   };
   var externals = [
   ];
+
   var modulesDirectories = ["node_modules"];
   var extensions = ["", ".js", ".jsx"];
-  var root = path.join(__dirname, "app","app");
+  var root = path.join(__dirname, "app", "app");
   var publicPath = options.devServer ?
     "//localhost:2992/_assets/" :
     "/_assets/";
@@ -48,11 +47,10 @@ module.exports = function(options) {
   };
   var excludeFromStats = [
     /node_modules[\\\/]react.*[\\\/]/,
-    /node_modules[\\\/]items-store[\\\/]/
   ];
   var plugins = [
     function() {
-      if(!options.prerender) {
+      if (!options.prerender) {
         this.plugin("done", function(stats) {
           var jsonStats = stats.toJson({
             chunkModules: true,
@@ -73,7 +71,7 @@ module.exports = function(options) {
     new webpack.PrefetchPlugin("react"),
     new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment")
   ];
-  if(options.prerender) {
+  if (options.prerender) {
     aliasLoader["react-proxy$"] = "react-proxy/unavailable";
     externals.push(
       /^react(\/.*)?$/,
@@ -83,25 +81,25 @@ module.exports = function(options) {
     );
     plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
   }
-  if(options.commonsChunk) {
+  if (options.commonsChunk) {
     plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : "")));
   }
 
   Object.keys(stylesheetLoaders).forEach(function(ext) {
-    var loaders = stylesheetLoaders[ext];
-    if(Array.isArray(loaders)) loaders = loaders.join("!");
-    if(options.prerender) {
+    var styleLoaders = stylesheetLoaders[ext];
+    if (Array.isArray(styleLoaders)) { styleLoaders = styleLoaders.join("!"); }
+    if (options.prerender) {
       stylesheetLoaders[ext] = "null-loader";
-    } else if(options.separateStylesheet) {
-      stylesheetLoaders[ext] = ExtractTextPlugin.extract("style-loader", loaders);
+    } else if (options.separateStylesheet) {
+      stylesheetLoaders[ext] = ExtractTextPlugin.extract("style-loader", styleLoaders);
     } else {
-      stylesheetLoaders[ext] = "style-loader!" + loaders;
+      stylesheetLoaders[ext] = "style-loader!" + styleLoaders;
     }
   });
-  if(options.separateStylesheet && !options.prerender) {
+  if (options.separateStylesheet && !options.prerender) {
     plugins.push(new ExtractTextPlugin("[name].css"));
   }
-  if(options.minimize) {
+  if (options.minimize) {
     plugins.push(
       new webpack.optimize.UglifyJsPlugin(),
       new webpack.optimize.DedupePlugin(),

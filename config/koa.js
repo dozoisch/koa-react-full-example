@@ -1,3 +1,4 @@
+"use strict";
 var path = require("path");
 var serve = require("koa-static-cache");
 var session = require("koa-generic-session");
@@ -9,10 +10,10 @@ var errorHandler = require("koa-error");
 var bodyParser = require("koa-bodyparser");
 
 module.exports = function (app, config, passport) {
-  if(!config.app.keys) throw new Error("Please add session secret key in the config file!");
+  if (!config.app.keys) { throw new Error("Please add session secret key in the config file!"); }
   app.keys = config.app.keys;
 
-  if(config.app.env !== "test") {
+  if (config.app.env !== "test") {
     app.use(logger());
   }
 
@@ -32,7 +33,7 @@ module.exports = function (app, config, passport) {
   app.use(function *(next) {
     this.render = views(config.app.root + "/src/views", {
       map: { html: "swig" },
-      cache : config.app.env === "development" ?  "memory" : false
+      cache : config.app.env === "development" ? "memory" : false
     });
     yield next;
   });

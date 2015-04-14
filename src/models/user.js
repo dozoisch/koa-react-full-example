@@ -1,21 +1,13 @@
-/**
- * Dependencies
- */
-var bcrypt = require('../../lib/bcrypt_thunk'); // version that supports yields
-var mongoose = require('mongoose');
+"use strict";
+var bcrypt = require("../../lib/bcrypt-thunk"); // version that supports yields
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var co = require('co');
-
-/**
- * Constants
- */
-const SALT_WORK_FACTOR = 10;
+var co = require("co");
 
 var UserSchema = new Schema({
   username: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
-},
-{
+}, {
   toJSON : {
     transform: function (doc, ret, options) {
       delete ret.password;
@@ -26,9 +18,9 @@ var UserSchema = new Schema({
 /**
  * Middlewares
  */
-UserSchema.pre('save', function (done) {
+UserSchema.pre("save", function (done) {
   // only hash the password if it has been modified (or is new)
-  if (!this.isModified('password')) {
+  if (!this.isModified("password")) {
     return done();
   }
 
@@ -57,17 +49,17 @@ UserSchema.methods.comparePassword = function *(candidatePassword) {
  */
 
 UserSchema.statics.passwordMatches = function *(username, password) {
-  var user = yield this.findOne({ 'username': username.toLowerCase() }).exec();
+  var user = yield this.findOne({ "username": username.toLowerCase() }).exec();
   if (!user) {
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   if (yield user.comparePassword(password)) {
     return user;
   }
 
-  throw new Error('Password does not match');
+  throw new Error("Password does not match");
 };
 
 // Model creation
-mongoose.model('User', UserSchema);
+mongoose.model("User", UserSchema);

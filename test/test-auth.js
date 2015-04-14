@@ -1,6 +1,4 @@
-/**
- * Dependencies
- */
+"use strict";
 var should = require("should");
 var app = require("../server");
 var request = require("supertest").agent(app.listen());
@@ -10,7 +8,7 @@ var authHelper = require("./middlewares/authenticator");
 // support for es6 generators
 var co = require("co");
 
-var URLS= {
+var URLS = {
   auth: "/auth",
   signOut: "/signout",
   signUp: "/signup",
@@ -22,10 +20,10 @@ describe("Auth", function () {
   }));
   describe("Anonymous Call", function () {
     it("should return empty body", function (done) {
-      request.get("/auth")
+      request.get(URLS.auth)
       .expect(200)
       .end(function (err, res) {
-        if (err) return done(err);
+        if (err) { return done(err); }
         should.not.exist(res.body.user);
         done();
       });
@@ -36,16 +34,19 @@ describe("Auth", function () {
       authHelper.signAgent(request, done);
     });
     it("should return the user infos", function (done) {
-      request.get("/auth")
+      request.get(URLS.auth)
       .expect(200)
       .end(function (err, res) {
-        if (err) return done(err);
+        if (err) { return done(err); }
         should.exist(res.body);
         should.exist(res.body.user);
         should.exist(res.body.user.username);
         done();
       });
     });
+
+    it("should sign out");
+    it("should sign up");
   });
 
   after(function (done) { databaseHelper.dropDatabase(done); });

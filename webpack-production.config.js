@@ -1,3 +1,4 @@
+"use strict";
 module.exports = require("./make-webpack-config")({
   // commonsChunk: true,
   env: "production",

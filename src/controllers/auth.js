@@ -1,3 +1,4 @@
+"use strict";
 var passport = require("koa-passport");
 
 exports.signIn = function *() {

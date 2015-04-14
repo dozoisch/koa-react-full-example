@@ -1,3 +1,4 @@
+"use strict";
 var router = require("koa-router");
 
 var countController = require("../src/controllers/count");
