@@ -26,7 +26,7 @@
     "hot-dev-server": "webpack-dev-server --content-base public -ds --config webpack.config.js --hot --progress --colors --port 2992 --inline",
     "dev-server": "npm run hot-dev-server",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --harmony --reporter spec ./test/test-*.js",
-    "lint": "eslint src test server.js make-webpack-config.js webpack-*.js app config lib"
+    "lint": "eslint src app test webpack config lib server.js webpack.config.js"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
   "license": "MIT",

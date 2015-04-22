@@ -36,6 +36,6 @@
     "react/self-closing-comp": 1,
     "react/wrap-multilines": 1,
     "space-after-keywords": 2,
-    "strict": [1, "global"]
+    "strict": 0,
   }
 }

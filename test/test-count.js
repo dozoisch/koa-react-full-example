@@ -18,7 +18,7 @@ describe("Count", function () {
     var c = new CountModel({value: gCount});
     yield [
       c.save(),
-      authHelper.createUser()
+      authHelper.createUser(),
     ];
   }));
 

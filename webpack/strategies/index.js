@@ -1,4 +1,3 @@
-"use strict";
 import development from "./development";
 import version from "./version";
 import optimize from "./optimize";

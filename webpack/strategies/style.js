@@ -1,4 +1,3 @@
-import _ from "lodash";
 import ExtractTextPlugin, { extract } from "extract-text-webpack-plugin";
 
 export default (config, options) => {

@@ -11,8 +11,8 @@ var UserSchema = new Schema({
   toJSON : {
     transform: function (doc, ret, options) {
       delete ret.password;
-    }
-  }
+    },
+  },
 });
 
 /**

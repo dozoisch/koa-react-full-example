@@ -39,7 +39,7 @@ module.exports = function (app, config, passport) {
   app.use(function *(next) {
     this.render = views(config.app.root + "/src/views", {
       map: { html: "swig" },
-      cache : config.app.env === "development" ? "memory" : false
+      cache : config.app.env === "development" ? "memory" : false,
     });
     yield next;
   });

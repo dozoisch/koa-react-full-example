@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
  */
 var CountSchema = new Schema({
   value: { type: Number, default: 0 },
-  updated: { type: Date, default: Date.now }
+  updated: { type: Date, default: Date.now },
 });
 
 CountSchema.pre("save", function (next) {

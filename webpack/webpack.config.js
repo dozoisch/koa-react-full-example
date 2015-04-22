@@ -24,7 +24,7 @@ export default (options) => {
 
   options.publicPath = options.devServer ? "//localhost:2992/_assets/" : "";
   const environment = options.test || options.development ? "development" : "production";
-  const babelLoader = "babel?optional[]=es7.objectRestSpread&optional[]=runtime"
+  const babelLoader = "babel?optional[]=es7.objectRestSpread&optional[]=runtime";
   const reactLoader = options.development ? `react-hot!${babelLoader}` : babelLoader;
   const chunkFilename = (options.devServer ? "[id].js" : "[name].js") +
     (options.longTermCaching && !options.prerender ? "?[chunkhash]" : "");
@@ -35,7 +35,7 @@ export default (options) => {
 
   const config = {
     entry: {
-      "app": "./app/app.jsx",
+      app: "./app/app.jsx",
     },
 
     output: {
@@ -50,7 +50,7 @@ export default (options) => {
     ],
 
     resolve: {
-      extensions: ["",".js",".jsx"],
+      extensions: ["", ".js", ".jsx"],
     },
 
     module: {
@@ -60,7 +60,7 @@ export default (options) => {
         { test: /\.(woff|woff2)/, loader: "url?limit=100000" },
         { test: /\.(png|jpg|jpeg|gif|svg)/, loader: "url?limit=100000" },
         { test: /\.(ttf|eot)/, loader: "file" },
-      ]
+      ],
     },
 
     plugins: [
@@ -70,19 +70,19 @@ export default (options) => {
       new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment"),
       new webpack.DefinePlugin({
         "process.env": {
-          "NODE_ENV": JSON.stringify(environment)
-        }
+          NODE_ENV: JSON.stringify(environment),
+        },
       }),
     ],
 
     devServer: {
       stats: {
-        exclude: options.excludeFromStats
-      }
-    }
+        exclude: options.excludeFromStats,
+      },
+    },
   };
 
   return strategies.reduce((conf, strategy) => {
     return strategy(conf, options);
   }, config);
-}
+};

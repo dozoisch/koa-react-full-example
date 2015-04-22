@@ -1,9 +1,8 @@
-import _ from "lodash";
 import fs from "fs";
 import { execSync } from "child_process";
 import { join } from "path";
 
-import { version } from "../../package.json"
+import { version } from "../../package.json";
 
 export default (config, options) => {
   if (!options.prerender) {
@@ -11,7 +10,7 @@ export default (config, options) => {
       this.plugin("done", function(stats) {
         let jsonStats = stats.toJson({
           chunkModules: true,
-          exclude: options.excludeFromStats
+          exclude: options.excludeFromStats,
         });
         jsonStats.publicPath = options.publicPath;
         jsonStats.appVersion = version;
@@ -23,7 +22,7 @@ export default (config, options) => {
         }
         fs.writeFileSync(join(folderPath, "stats.json"), JSON.stringify(jsonStats));
       });
-    }
+    };
     config.plugins.push(plugin);
   }
   return config;
