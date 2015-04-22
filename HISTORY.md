@@ -1,5 +1,8 @@
 #History
 
+## 0.5.1
+- Linted
+
 ## 0.5.0
 - Finish refactor to es6
 - Refactored webpack build
