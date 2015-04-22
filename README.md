@@ -40,6 +40,10 @@ To run the project, you need two terminals.
 
 `npm run build`
 
+**Running Prod**
+
+`npm run prod`
+
 **Run Tests**
 
 `npm run build && npm test`
@@ -53,7 +57,6 @@ The plugin is under MIT license, please see the LICENSE file provided with the m
 Updates to come:
 
  - Server side rendering with prod webpack config
- - Description of some design choices
  - More in-depth React-Koa example
  - Code coverage
  - Error handling

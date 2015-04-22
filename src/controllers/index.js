@@ -3,14 +3,20 @@ var stats = require("../../build/stats.json");
 
 var publicPath = stats.publicPath;
 
-var STYLE_URL = process.env.NODE_ENV === "production" ? (publicPath + "main.css?" + stats.hash) : null;
-var SCRIPT_URL = publicPath + [].concat(stats.assetsByChunkName.main)[0];
+var STYLE_URL;
+var SCRIPT_URL_COMMON;
+var SCRIPT_URL_APP = publicPath + [].concat(stats.assetsByChunkName.app)[0]
+if (process.env.NODE_ENV === "production") {
+  var COMMON_CHUNK = stats.assetsByChunkName.commons;
+  STYLE_URL = (publicPath + [].concat(stats.assetsByChunkName.app)[1] +"?" + stats.hash);
+  SCRIPT_URL_APP += "?" + stats.hash;
+}
 
 exports.index = function *() {
   this.body = yield this.render("basic", {
     version: stats.appVersion,
     commit: stats.appCommit,
     STYLE_URL: STYLE_URL,
-    SCRIPT_URL: SCRIPT_URL,
+    SCRIPT_URL: SCRIPT_URL_APP,
   });
 };

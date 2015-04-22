@@ -7,7 +7,8 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || "development";
 var base = {
   app: {
     root: path.normalize(path.join(__dirname, "/..")),
-    env: env
+    env: env,
+    keys: ["super-secret-hurr-durr"],
   }
 };
 
