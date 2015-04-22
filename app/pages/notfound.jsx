@@ -1,13 +1,13 @@
-var React = require("react");
+import React, { PropTypes } from "react";
 
-var NotFound = React.createClass({
+const NotFound = React.createClass({
   displayName: "NotFoundPage",
 
   contextTypes: {
-    router: React.PropTypes.func
+    router: PropTypes.func
   },
 
-  render: function () {
+  render() {
     return (
       <div>
         <h1>404 <small>| Page Not Found</small></h1>
@@ -20,4 +20,4 @@ var NotFound = React.createClass({
   }
 });
 
-module.exports = NotFound;
+export default NotFound;

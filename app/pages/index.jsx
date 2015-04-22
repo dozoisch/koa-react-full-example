@@ -1,10 +1,11 @@
 "use strict";
-var React = require("react");
-var Counter = require("../components/counter");
+import React from "react";
+import Counter from "../components/counter";
 
-module.exports = React.createClass({
+const Index = React.createClass({
   displayName: "IndexPage",
-  render: function() {
+
+  render() {
     return (
       <div>
         <h2>Index - Super Counter</h2>
@@ -12,4 +13,6 @@ module.exports = React.createClass({
       </div>
     );
   }
-})
+});
+
+export default Index;

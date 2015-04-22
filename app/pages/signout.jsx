@@ -1,20 +1,23 @@
-var React = require("react");
-var AuthStore = require("../stores/auth");
+import React, { PropTypes } from "react";
+import AuthStore from "../stores/auth";
 
-var SignOut = React.createClass({
+const SignOut = React.createClass({
+  displayName: "SignOut",
+
   contextTypes: {
     router: React.PropTypes.func
   },
 
-  componentWillMount: function () {
-    AuthStore.signOut(function () {
+  componentWillMount() {
+    AuthStore.signOut(() => {
       this.context.router.replaceWith("index");
-    }.bind(this));
+    });
   },
 
-  render: function () {
+  render() {
     return null;
-  }
+  },
+
 });
 
-module.exports = SignOut;
+export default SignOut;

@@ -1,41 +1,40 @@
-var React = require("react");
+import React, { PropTypes } from "react";
 
-var Col = require("react-bootstrap/lib/Col");
-var Input = require("react-bootstrap/lib/Input");
-var Button = require("react-bootstrap/lib/Button");
+import { Col, Input, Button } from "react-bootstrap";
 
-var AuthStore = require("../stores/auth");
+import AuthStore from "../stores/auth";
 
-var SignUp = React.createClass({
+const SignUp = React.createClass({
   displayName: "SignUp",
 
   contextTypes: {
-    router: React.PropTypes.func
+    router: PropTypes.func
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return {};
   },
 
-  handleSubmit: function (e) {
+  handleSubmit(e) {
     e.preventDefault();
-    var username = this.refs.username.getValue();
-    var password = this.refs.password.getValue();
-    var repeatPassword = this.refs.repeatPassword.getValue();
+    const username = this.refs.username.getValue();
+    const password = this.refs.password.getValue();
+    const repeatPassword = this.refs.repeatPassword.getValue();
     if (password === repeatPassword && password.trim()) {
-      AuthStore.signUp(username, password, function (err, user) {
+      AuthStore.signUp(username, password, (err, user) => {
         if (err || !user) {
           return this.setState({ error: "Could not Create the User" });
         }
         this.context.router.replaceWith("index");
-      }.bind(this));
+      });
     }
   },
-  renderErrorBlock: function () {
+
+  renderErrorBlock() {
     return (<p className="help-block">{this.state.error}</p>);
   },
 
-  render: function () {
+  render() {
     return (
       <div>
         <h1>Sign Up</h1>
@@ -53,4 +52,4 @@ var SignUp = React.createClass({
   }
 });
 
-module.exports = SignUp;
+export default SignUp;

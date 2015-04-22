@@ -1,38 +1,40 @@
 "use strict";
-var React = require("react");
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from "react";
 
-var Link = require("react-router").Link;
+import { Link } from "react-router";
 
-var Navbar = require("react-bootstrap/lib/Navbar");
-var Nav = require("react-bootstrap/lib/Nav");
-var Glyphicon = require("react-bootstrap/lib/Glyphicon");
+import { Navbar, Nav, Glyphicon } from "react-bootstrap";
 
-var ReactRouterBootstrap = require('react-router-bootstrap');
-var NavItemLink = ReactRouterBootstrap.NavItemLink;
+import { NavItemLink } from "react-router-bootstrap";
 
-var AuthStore = require("../stores/auth");
+import AuthStore from "../stores/auth";
 
-var AppNavbar = React.createClass({
+const AppNavbar = React.createClass({
   displayName: "AppNavbar",
+
   propTypes: {
     brand: PropTypes.string,
   },
-  getInitialState: function() {
+
+  getInitialState() {
     return {
       user: AuthStore.getUser(),
     };
   },
-  componentWillMount: function () {
+
+  componentWillMount() {
     AuthStore.init();
   },
-  componentDidMount: function () {
+
+  componentDidMount() {
     AuthStore.addChangeListener(this.updateUser);
   },
-  componentWillUnmount: function() {
+
+  componentWillUnmount() {
     AuthStore.removeChangeListener(this.updateUser);
   },
-  updateUser: function () {
+
+  updateUser() {
     if(!this.isMounted()) {
       return;
     }
@@ -40,10 +42,12 @@ var AppNavbar = React.createClass({
       user: AuthStore.getUser(),
     });
   },
-  renderBrand: function () {
+
+  renderBrand() {
     return (<Link to="index">{this.props.brand}</Link>);
   },
-  renderNavLinks: function () {
+
+  renderNavLinks() {
     if (this.state.user) {
       return (
         <Nav right eventKey={0}>
@@ -64,7 +68,8 @@ var AppNavbar = React.createClass({
       </Nav>
     );
   },
-  render: function () {
+
+  render() {
     return (
       <Navbar brand={this.renderBrand()} inverse fixedTop toggleNavKey={this.state.user ? 0 : undefined}>
         {this.renderNavLinks()}
@@ -73,4 +78,4 @@ var AppNavbar = React.createClass({
   }
 });
 
-module.exports = AppNavbar;
+export default AppNavbar;

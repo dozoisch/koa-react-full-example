@@ -1,9 +1,9 @@
-var SignIn = require("../pages/signin");
-var AuthStore = require("../stores/auth");
+import SignIn from "../pages/signin";
+import AuthStore from "../stores/auth";
 
-var Authentication = {
+const Authentication = {
   statics: {
-    willTransitionTo: function (transition) {
+    willTransitionTo(transition) {
       if (!AuthStore.isLoggedIn()) {
         SignIn.attemptedTransition = transition;
         transition.redirect("sign-in");
@@ -12,4 +12,4 @@ var Authentication = {
   }
 };
 
-module.exports = Authentication;
+export default Authentication;

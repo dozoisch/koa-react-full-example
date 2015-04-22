@@ -1,10 +1,10 @@
 "use strict";
-var React = require("react");
+import React from "react";
 
-module.exports = React.createClass({
+const Null = React.createClass({
   displayName: "NullPage",
 
-  render: function () {
+  render() {
     return (
       <div>
         <h2>Coming Soon</h2>
@@ -13,3 +13,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+export default Null;

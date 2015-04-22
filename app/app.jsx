@@ -8,16 +8,16 @@ import { Authenticated as Layout, Anonymous as AnonymousLayout } from "./layouts
 
 import Application from "./application";
 
-var IndexPage = require("./pages/index");
-var NotFoundPage = require("./pages/notfound");
-var NullPage = require("./pages/null");
-var SignInPage = require("./pages/signin");
-var SignUpPage = require("./pages/signup");
-var SignOut = require("./pages/signout");
+import IndexPage from "./pages/index";
+import NotFoundPage from "./pages/notfound";
+import NullPage from "./pages/null";
+import SignInPage from "./pages/signin";
+import SignUpPage from "./pages/signup";
+import SignOut from "./pages/signout";
 
-var container = document.getElementById("content");
+const container = document.getElementById("content");
 
-var routes = (
+const routes = (
   <Route handler={Application}>
     <Route name="anonymous" path="/auth" handler={AnonymousLayout}>
       <Route name="sign-in" path="signin" handler={SignInPage} />
@@ -34,7 +34,7 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, Router.HashLocation, function (Handler) {
+Router.run(routes, Router.HashLocation, (Handler) => {
   React.render(<Handler/>, container);
 });
 

@@ -1,46 +1,43 @@
-var React = require("react");
-var Router = require("react-router");
+import React, { PropTypes } from "react";
+import { Link } from "react-router";
 
-var Link = Router.Link;
+import { Jumbotron, Col, Input, Button, Row } from "react-bootstrap";
 
-var Jumbotron = require("react-bootstrap/lib/Jumbotron");
-var Row = require("react-bootstrap/lib/Row");
-var Col = require("react-bootstrap/lib/Col");
-var Input = require("react-bootstrap/lib/Input");
-var Button = require("react-bootstrap/lib/Button");
+import AuthStore from "../stores/auth";
 
-var AuthStore = require("../stores/auth");
-
-var SignIn = React.createClass({
+const SignIn = React.createClass({
   displayName: "SignInPage",
 
   contextTypes: {
-    router: React.PropTypes.func
+    router: PropTypes.func
   },
 
   statics: {
     attemptedTransition: null
   },
-  getInitialState: function () {
+
+  getInitialState() {
     return {
       error: false
     };
   },
 
-  componentWillMount: function () {
+  componentWillMount() {
     this.retryTransition();
   },
-  componentDidMount: function() {
+
+  componentDidMount() {
     AuthStore.addChangeListener(this.retryTransition);
   },
-  componentWillUnmount: function () {
+
+  componentWillUnmount() {
     AuthStore.removeChangeListener(this.retryTransition);
   },
 
-  handleSubmit: function (e) {
+  handleSubmit (e) {
     e.preventDefault();
-    var username = this.refs.username.getValue();
-    var password = this.refs.password.getValue();
+    const username = this.refs.username.getValue();
+    const password = this.refs.password.getValue();
     AuthStore.signIn(username, password, function (err, user) {
       if (err || !user) {
         return this.setState({ error: true });
@@ -50,19 +47,21 @@ var SignIn = React.createClass({
     }.bind(this));
   },
 
-  retryTransition: function () {
+  retryTransition() {
     if (SignIn.attemptedTransition) {
-      var transition = SignIn.attemptedTransition;
+      let transition = SignIn.attemptedTransition;
       SignIn.attemptedTransition = null;
       transition.retry();
     } else {
       this.context.router.replaceWith("index");
     }
   },
-  renderErrorBlock: function () {
-    return this.state.error ? <p className="help-block">Bad login information</p> : null;
+
+  renderErrorBlock() {
+    return this.state.error ? (<p className="help-block">Bad login information</p>) : null;
   },
-  render: function () {
+
+  render() {
     return (
       <div>
         <h1>Sign In</h1>
@@ -86,7 +85,7 @@ var SignIn = React.createClass({
         </Row>
       </div>
     );
-  }
+  },
 });
 
-module.exports = SignIn;
+export default SignIn;

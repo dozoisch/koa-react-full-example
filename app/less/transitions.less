@@ -16,19 +16,19 @@
   #transition();
   opacity: 0.01;
   transition: all @timing @easeInOutQuart @timing;
+
+  &.transition-enter-active {
+    opacity: 1;
+  }
 }
 
 .transition-leave {
   #transition();
   opacity: 0.75;
   transition: all @timing @easeInOutQuart;
-}
 
-.transition-enter.transition-enter-active {
-  opacity: 1;
-}
-
-.transition-leave.transition-leave-active  {
-  opacity: 0.01;
+  &.transition-leave-active  {
+    opacity: 0.01;
+  }
 }
 

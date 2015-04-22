@@ -12,6 +12,7 @@ const MainLayout = React.createClass({
   displayName: "MainLayout",
 
   mixins: [Authentication],
+
   render() {
     return (
       <div>
