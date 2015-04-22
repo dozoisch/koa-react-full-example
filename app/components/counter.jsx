@@ -1,45 +1,54 @@
 "use strict";
-var React = require("react");
-var request = require("superagent");
+import React from "react";
+import request from "superagent";
 
-var get = function (url, cb) {
+import { Button, Badge } from "react-bootstrap";
+
+const get = (url, cb) => {
   request.get(url)
   .set("Content-Type", "application/json")
   .end(cb);
 }
 
-module.exports = React.createClass({
-  getInitialState: function () {
+const Counter =  React.createClass({
+  displayName: "Counter",
+
+  getInitialState() {
     return { count : this.props.initialCount || 0 };
   },
-  componentWillMount: function () {
-    get("/value", function (err, res) {
+
+  componentWillMount() {
+    get("/value", (err, res) => {
       this.setState({ count: res.body.count });
-    }.bind(this));
+    });
   },
-  onClickInc: function (event) {
+
+  onClickInc(event) {
     event.preventDefault();
-    get("/inc", function (err, res) {
+    get("/inc", (err, res) => {
+      this.setState({ count: res.body.count });
+    });
+  },
+
+  onClickDec(event) {
+    event.preventDefault();
+    get("/dec", (err, res) => {
       this.setState({count: res.body.count});
     }.bind(this));
   },
-  onClickDec: function (event) {
-    event.preventDefault();
-    get("/dec", function (err, res) {
-      this.setState({count: res.body.count});
-    }.bind(this));
-  },
-  render: function () {
+  render() {
     return (
       <div>
         <h3>Counter</h3>
-        <div className="counter">Count&nbsp;
-          <a href="#" onClick={this.onClickInc}>(Click to increment)</a>&nbsp;
-          <a href="#" onClick={this.onClickDec}>(Click to decrement)</a>&nbsp;
-          <span>{this.state.count}</span>
+        <div className="counter">
+          Count
+          <Badge>{this.state.count}</Badge>
+          <Button bsStyle="success" onClick={this.onClickInc}>Increment</Button>
+          <Button bsStyle="danger" onClick={this.onClickDec}>Decrement</Button>
         </div>
       </div>
     );
   }
 });
 
+export default Counter;

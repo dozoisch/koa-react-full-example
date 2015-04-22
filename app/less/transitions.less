@@ -1,0 +1,34 @@
+@easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+@width: 100%;
+@timing: 300ms;
+
+#transition {
+  position: absolute;
+  width: @width;
+}
+
+.transition-crop {
+  overflow: hidden;
+  position: relative;
+}
+
+.transition-enter {
+  #transition();
+  opacity: 0.01;
+  transition: all @timing @easeInOutQuart @timing;
+}
+
+.transition-leave {
+  #transition();
+  opacity: 0.75;
+  transition: all @timing @easeInOutQuart;
+}
+
+.transition-enter.transition-enter-active {
+  opacity: 1;
+}
+
+.transition-leave.transition-leave-active  {
+  opacity: 0.01;
+}
+
