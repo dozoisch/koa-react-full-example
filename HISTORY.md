@@ -1,5 +1,13 @@
 #History
 
+## 0.5.0
+- Finish refactor to es6
+- Refactored webpack build
+- Added transitions
+- Added Layouts
+- Container based travis
+- Bump deps
+
 ##0.4.3
 - Preparing ground for Babel ES6 switch
 - Added eslint
