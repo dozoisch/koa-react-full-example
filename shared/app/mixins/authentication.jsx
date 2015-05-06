@@ -1,5 +1,5 @@
 import SignIn from "../pages/signin";
-import AuthStore from "../stores/auth";
+import AuthStore from "../../stores/auth";
 
 const Authentication = {
   statics: {

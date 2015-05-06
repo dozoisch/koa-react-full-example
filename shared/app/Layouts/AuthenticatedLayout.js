@@ -5,7 +5,7 @@ import { Jumbotron, Nav, Row, Col } from "react-bootstrap";
 
 import { NavItemLink } from "react-router-bootstrap";
 
-import AuthStore from "../stores/auth";
+import AuthStore from "../../stores/auth";
 import Authentication from "../mixins/authentication";
 
 const MainLayout = React.createClass({

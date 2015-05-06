@@ -1,4 +1,14 @@
 require("babel/register")({
   ignore: /node_modules/,
-  optional: ["es7.objectRestSpread", "runtime"]
+  blacklist: [
+    "es6.forOf",
+    "regenerator",
+  ],
+  optional: [
+    "es7.objectRestSpread",
+    "es7.asyncFunctions",
+    "es7.classProperties",
+    "asyncToGenerator",
+     "runtime",
+  ],
 });

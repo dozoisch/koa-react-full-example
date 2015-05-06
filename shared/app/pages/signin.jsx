@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import { Jumbotron, Col, Input, Button, Row } from "react-bootstrap";
 
-import AuthStore from "../stores/auth";
+import AuthStore from "../../stores/auth";
 
 const SignIn = React.createClass({
   displayName: "SignInPage",

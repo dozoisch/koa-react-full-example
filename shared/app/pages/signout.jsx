@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import AuthStore from "../stores/auth";
+import AuthStore from "../../stores/auth";
 
 const SignOut = React.createClass({
   displayName: "SignOut",

@@ -1,3 +1,4 @@
+import { join } from "path";
 import _ from "lodash";
 import webpack from "webpack";
 import strategies from "./strategies";
@@ -21,25 +22,26 @@ const defaultOptions = {
 
 export default (options) => {
   options = _.merge({}, defaultOptions, options);
-
   options.publicPath = options.devServer ? "//localhost:2992/_assets/" : "";
+
   const environment = options.test || options.development ? "development" : "production";
-  const babelLoader = "babel?optional[]=es7.objectRestSpread&optional[]=runtime";
+  const babelLoader = "babel?optional[]=runtime" +
+    "&optional[]=es7.objectRestSpread&optional[]=es7.asyncFunctions&optional[]=es7.classProperties";
   const reactLoader = options.development ? `react-hot!${babelLoader}` : babelLoader;
   const chunkFilename = (options.devServer ? "[id].js" : "[name].js") +
     (options.longTermCaching && !options.prerender ? "?[chunkhash]" : "");
 
   options.excludeFromStats = [
-    /node_modules[\\\/]react(-router)?[\\\/]/,
+    /node_modules/,
   ];
 
   const config = {
     entry: {
-      app: "./app/app.jsx",
+      app: join(__dirname, "..", "client", "app.js"),
     },
 
     output: {
-      path: "./build/public",
+      path: join(__dirname, "build", "public"),
       filename: "[name].js",
       chunkFilename: chunkFilename,
       publicPath: options.publicPath,
@@ -67,10 +69,12 @@ export default (options) => {
       new webpack.PrefetchPlugin("react"),
       new webpack.PrefetchPlugin("react-bootstrap"),
       new webpack.PrefetchPlugin("react-router"),
+      new webpack.PrefetchPlugin("flummox"),
       new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment"),
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify(environment),
+          API_URL: JSON.stringify(""),
         },
       }),
     ],

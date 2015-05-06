@@ -7,7 +7,7 @@ import { Navbar, Nav, Glyphicon } from "react-bootstrap";
 
 import { NavItemLink } from "react-router-bootstrap";
 
-import AuthStore from "../stores/auth";
+import AuthStore from "../../stores/auth";
 
 const AppNavbar = React.createClass({
   displayName: "AppNavbar",

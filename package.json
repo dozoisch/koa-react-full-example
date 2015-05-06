@@ -39,6 +39,7 @@
     "bootstrap": "~3.3.4",
     "co": "~4.5.1",
     "co-views": "0.3.x",
+    "flummox": "~4.0.0-alpha2",
     "koa": "~0.19.0",
     "koa-bodyparser": "~1.5.0",
     "koa-compress": "1.0.x",

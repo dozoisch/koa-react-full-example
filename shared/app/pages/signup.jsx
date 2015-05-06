@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 
 import { Col, Input, Button } from "react-bootstrap";
 
-import AuthStore from "../stores/auth";
+import AuthStore from "../../stores/auth";
 
 const SignUp = React.createClass({
   displayName: "SignUp",

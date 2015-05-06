@@ -1,7 +1,7 @@
 "use strict";
-/**
- * Dependencies
- */
+console.log("Node version:", process.version);
+require("./register-babel");
+
 var fs = require("fs");
 var koa = require("koa");
 var mongoose = require("mongoose");

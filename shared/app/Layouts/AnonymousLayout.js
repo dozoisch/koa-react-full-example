@@ -1,11 +1,7 @@
 import React from "react";
 import { Link, RouteHandler } from "react-router";
 
-import { Jumbotron, Nav, Row, Col } from "react-bootstrap";
-
-import { NavItemLink } from "react-router-bootstrap";
-
-import AuthStore from "../stores/auth";
+import { Jumbotron } from "react-bootstrap";
 
 const AnonymousLayout = React.createClass({
   displayName: "AnonymousLayout",
