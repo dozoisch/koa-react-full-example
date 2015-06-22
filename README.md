@@ -2,6 +2,8 @@
 
 [![Join the chat at https://gitter.im/dozoisch/koa-react-full-example](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dozoisch/koa-react-full-example?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+[![Pair on this](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)](http://start.thinkful.com/react/?utm_source=github&utm_medium=badge&utm_campaign=koa-react-full-example)
+
 [![Build Status][travis.img]][travis.url]
 [![dependencies][deps.img]][deps.url]
 [![devdependencies][devdeps.img]][devdeps.url]
