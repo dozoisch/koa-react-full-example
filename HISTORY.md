@@ -1,5 +1,9 @@
 #History
 
+## 0.5.2
+- Added thinkful badge
+- Fixed issue with webpack version
+
 ## 0.5.1
 - Linted
 
