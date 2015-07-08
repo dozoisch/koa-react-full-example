@@ -2,8 +2,11 @@
 import React from "react";
 import Counter from "../components/counter";
 
-const Index = React.createClass({
-  displayName: "IndexPage",
+export default class Index extends React.Component {
+  constructor() {
+    super();
+    this.displayName = "IndexPage";
+  }
 
   render() {
     return (
@@ -13,6 +16,4 @@ const Index = React.createClass({
       </div>
     );
   }
-});
-
-export default Index;
+}

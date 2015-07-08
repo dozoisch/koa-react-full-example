@@ -7,8 +7,12 @@ import { NavItemLink } from "react-router-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-const AnonymousLayout = React.createClass({
-  displayName: "AnonymousLayout",
+export default class AnonymousLayout extends React.Component {
+  constructor() {
+    super();
+    this.displayName = "AnonymousLayout";
+  }
+
   render() {
     return (
       <Jumbotron>
@@ -18,6 +22,4 @@ const AnonymousLayout = React.createClass({
       </Jumbotron>
     );
   }
-});
-
-export default AnonymousLayout;
+}

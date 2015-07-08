@@ -6,12 +6,20 @@ import { Jumbotron, Nav, Row, Col } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 import AuthStore from "../stores/auth";
-import Authentication from "../mixins/authentication";
+import SignIn from "../pages/signin";
 
-const MainLayout = React.createClass({
-  displayName: "MainLayout",
+export default class MainLayout extends React.Component {
+  constructor() {
+    super();
+    this.displayName = "MainLayout";
+  }
 
-  mixins: [Authentication],
+  static willTransitionTo(transition) {
+    if (!AuthStore.isLoggedIn()) {
+      SignIn.attemptedTransition = transition;
+      transition.redirect("sign-in");
+    }
+  }
 
   render() {
     return (
@@ -33,6 +41,4 @@ const MainLayout = React.createClass({
       </div>
     );
   }
-});
-
-export default MainLayout;
+}

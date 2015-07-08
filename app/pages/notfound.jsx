@@ -1,11 +1,10 @@
 import React, { PropTypes } from "react";
 
-const NotFound = React.createClass({
-  displayName: "NotFoundPage",
-
-  contextTypes: {
-    router: PropTypes.func
-  },
+export default class NotFound extends React.Component {
+  constructor() {
+    super();
+    this.displayName = 'NotFoundPage';
+  }
 
   render() {
     return (
@@ -18,6 +17,6 @@ const NotFound = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default NotFound;
+NotFound.contextTypes = { router: React.PropTypes.func };

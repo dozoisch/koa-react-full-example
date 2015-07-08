@@ -3,5 +3,5 @@ import Authenticated from "./authenticated";
 
 export {
   Anonymous,
-  Authenticated,
+  Authenticated
 };
