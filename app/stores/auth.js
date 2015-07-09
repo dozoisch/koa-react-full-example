@@ -1,18 +1,43 @@
 import request from "superagent";
 
 let _user = null;
-let _changeListeners  = [];
+let _changeListeners = [];
 let _initCalled = false;
 
 const URLS = {
   AUTH: "/auth",
   SIGN_UP: "/signup",
-  SIGN_OUT: "/signout"
+  SIGN_OUT: "/signout",
 };
+
+function parseUser(user) {
+  return {
+    id: user.id,
+    username: user.username,
+  };
+}
+
+function _postAndHandleParseUser(url, username, password, done) {
+  request.post(url)
+    .set("Accept", "application/json")
+    .set("Content-Type", "application/json")
+    .send({ username: username, password: password })
+    .end(function(err, res) {
+      if (!err && res.body && res.body.user) {
+        _user = parseUser(res.body.user);
+        /* eslint-disable block-scoped-var */
+        AuthStore.notifyChange();
+        /* eslint-enable block-scoped-var */
+      }
+      if (done) {
+        done(err, _user);
+      }
+    });
+}
 
 const AuthStore = {
   init: function() {
-    if(_initCalled) {
+    if (_initCalled) {
       return;
     }
     _initCalled = true;
@@ -33,7 +58,7 @@ const AuthStore = {
     _postAndHandleParseUser(URLS.AUTH, username, password, done);
   },
   signUp: function(username, password, done) {
-    _postAndHandleParseUser(URLS.SIGN_UP  , username, password, done);
+    _postAndHandleParseUser(URLS.SIGN_UP, username, password, done);
   },
   signOut: function(done) {
     _user = null;
@@ -70,27 +95,4 @@ const AuthStore = {
   },
 };
 
-function _postAndHandleParseUser(url, username, password, done) {
-  request.post(url)
-    .set("Accept", "application/json")
-    .set("Content-Type", "application/json")
-    .send({ username: username, password: password })
-    .end(function(err, res) {
-      if (!err && res.body && res.body.user) {
-        _user = parseUser(res.body.user);
-        AuthStore.notifyChange();
-      }
-      if (done) {
-        done(err, _user);
-      }
-    });
-}
-
-function parseUser(user) {
-  return {
-    id: user.id,
-    username: user.username,
-  };
-}
-
-module.exports = AuthStore;
+export default AuthStore;

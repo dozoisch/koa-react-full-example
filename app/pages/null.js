@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default class Null extends React.Component {
+export default class Null extends Component {
+  static displayName = "NullPage";
   constructor() {
     super();
-    this.displayName = 'NullPage';
   }
 
   render() {

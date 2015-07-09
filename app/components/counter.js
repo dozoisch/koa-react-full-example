@@ -7,19 +7,25 @@ const get = (url, cb) => {
   request.get(url)
   .set("Content-Type", "application/json")
   .end(cb);
-}
+};
 
 export default class Counter extends React.Component {
+  static displayName = "Counter";
+  static propTypes = { initialCount: React.PropTypes.number };
+
   constructor(props) {
     super(props);
-    this.state = {count: props.initialCount};
-    this.displayName = "Counter";
+    this.state = { count: props.initialCount };
     this.onClickInc = this.onClickInc.bind(this);
     this.onClickDec = this.onClickDec.bind(this);
   }
 
   componentWillMount() {
     get("/value", (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
       this.setState({ count: res.body.count });
     });
   }
@@ -27,6 +33,10 @@ export default class Counter extends React.Component {
   onClickInc(event) {
     event.preventDefault();
     get("/inc", (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
       this.setState({ count: res.body.count });
     });
   }
@@ -34,7 +44,11 @@ export default class Counter extends React.Component {
   onClickDec(event) {
     event.preventDefault();
     get("/dec", (err, res) => {
-      this.setState({count: res.body.count});
+      if (err) {
+        console.log(err);
+        return;
+      }
+      this.setState({ count: res.body.count });
     });
   }
 
@@ -53,5 +67,4 @@ export default class Counter extends React.Component {
   }
 }
 
-Counter.propTypes = { initialCount: React.PropTypes.number };
 Counter.defaultProps = { initialCount: 0 };

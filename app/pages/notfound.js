@@ -1,9 +1,10 @@
-import React, { PropTypes } from "react";
+import React, { PropTypes, Component } from "react";
 
-export default class NotFound extends React.Component {
+export default class NotFound extends Component {
+  static displayName = "NotFoundPage";
+
   constructor() {
     super();
-    this.displayName = 'NotFoundPage';
   }
 
   render() {
@@ -19,4 +20,4 @@ export default class NotFound extends React.Component {
   }
 }
 
-NotFound.contextTypes = { router: React.PropTypes.func };
+NotFound.contextTypes = { router: PropTypes.func };

@@ -10,8 +10,8 @@ const SALT = "$2a$10$zyParsk87TjIfgPFsOC2HO";
 const HASH = "$2a$10$zyParsk87TjIfgPFsOC2HOnXu3azSlVkpf9L48qJcFcCofF4eDqeW";
 const ROUNDS = 10;
 
-describe("Bcrypt Thunk'ed", function () {
-  describe("Salt", function () {
+describe("Bcrypt Thunk'ed", function() {
+  describe("Salt", function() {
     it("should generate salt", co.wrap(function *() {
       var salt = yield bcrypt.genSalt(ROUNDS);
       should.exist(salt);
@@ -28,7 +28,7 @@ describe("Bcrypt Thunk'ed", function () {
     }));
   });
 
-  describe("Hash", function () {
+  describe("Hash", function() {
     it("should hash password", co.wrap(function *() {
       var hash = yield bcrypt.hash(PASSWORD, SALT);
       should.exist(hash);
@@ -45,7 +45,7 @@ describe("Bcrypt Thunk'ed", function () {
     }));
   });
 
-  describe("Match", function () {
+  describe("Match", function() {
     it("should match passwords", co.wrap(function *() {
       var match = yield bcrypt.compare(PASSWORD, HASH);
       match.should.be.true;

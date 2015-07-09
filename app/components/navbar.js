@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 
 import { Link } from "react-router";
 
@@ -8,12 +8,13 @@ import { NavItemLink } from "react-router-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-export default class AppNavbar extends React.Component {
+export default class AppNavbar extends Component {
+  static displayName = "AppNavbar";
+
   constructor(props) {
     super(props);
-    this.displayName = "AppNavbar";
     this.state = { user: props.user };
-    this.updateUser = this.updateUser.bind(this);
+    this.onStoreChange = this.onStoreChange.bind(this);
   }
 
   componentWillMount() {
@@ -21,17 +22,25 @@ export default class AppNavbar extends React.Component {
   }
 
   componentDidMount() {
-    AuthStore.addChangeListener(this.updateUser);
+    AuthStore.addChangeListener(this.onStoreChange);
   }
 
   componentWillUnmount() {
-    AuthStore.removeChangeListener(this.updateUser);
+    AuthStore.removeChangeListener(this.onStoreChange);
   }
 
-  updateUser() {
+  onStoreChange() {
     this.setState({
-      user: AuthStore.getUser()
+      user: AuthStore.getUser(),
     });
+  }
+
+  render() {
+    return (
+      <Navbar brand={this.renderBrand()} inverse fixedTop toggleNavKey={this.state.user ? 0 : undefined }>
+        {this.renderNavLinks()}
+      </Navbar>
+    );
   }
 
   renderBrand() {
@@ -59,15 +68,7 @@ export default class AppNavbar extends React.Component {
       </Nav>
     );
   }
-
-  render() {
-    return (
-      <Navbar brand={this.renderBrand()} inverse fixedTop toggleNavKey={this.state.user ? 0 : undefined}>
-        {this.renderNavLinks()}
-      </Navbar>
-    );
-  }
 }
 
-AppNavbar.propTypes = { brand: React.PropTypes.string };
-AppNavbar.defaultProps = { user: AuthStore.getUser()};
+AppNavbar.propTypes = { brand: PropTypes.string };
+AppNavbar.defaultProps = { user: AuthStore.getUser() };

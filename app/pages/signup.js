@@ -1,13 +1,15 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 
 import { Col, Input, Button } from "react-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-export default class SignUp extends React.Component {
+export default class SignUp extends Component {
+  static displayName = "SignUp";
+  static contextTypes = { router: PropTypes.func };
+
   constructor(props) {
     super(props);
-    this.displayName = 'SignUp';
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,10 +31,6 @@ export default class SignUp extends React.Component {
     }
   }
 
-  renderErrorBlock() {
-    return (<p className="help-block">{this.state.error}</p>);
-  }
-
   render() {
     return (
       <div>
@@ -49,6 +47,8 @@ export default class SignUp extends React.Component {
       </div>
     );
   }
-}
 
-SignUp.contextTypes = { router: React.PropTypes.func };
+  renderErrorBlock() {
+    return (<p className="help-block">{this.state.error}</p>);
+  }
+}

@@ -6,7 +6,7 @@ var publicPath = stats.publicPath;
 var STYLE_URL;
 var SCRIPT_URL_APP = publicPath + [].concat(stats.assetsByChunkName.app)[0];
 if (process.env.NODE_ENV === "production") {
-  STYLE_URL = (publicPath + [].concat(stats.assetsByChunkName.app)[1] +"?" + stats.hash);
+  STYLE_URL = (publicPath + [].concat(stats.assetsByChunkName.app)[1] + "?" + stats.hash);
   SCRIPT_URL_APP += "?" + stats.hash;
 }
 

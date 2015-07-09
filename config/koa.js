@@ -1,19 +1,19 @@
 "use strict";
-var path = require("path");
-var serve = require("koa-static-cache");
-var session = require("koa-generic-session");
-var MongoStore = require("koa-sess-mongo-store");
-var responseTime = require("koa-response-time");
-var logger = require("koa-logger");
-var views = require("co-views");
-var compress = require("koa-compress");
-var errorHandler = require("koa-error");
-var bodyParser = require("koa-bodyparser");
+const path = require("path");
+const serve = require("koa-static-cache");
+const session = require("koa-generic-session");
+const MongoStore = require("koa-sess-mongo-store");
+const responseTime = require("koa-response-time");
+const logger = require("koa-logger");
+const views = require("co-views");
+const compress = require("koa-compress");
+const errorHandler = require("koa-error");
+const bodyParser = require("koa-bodyparser");
 
-var STATIC_FILES_MAP = {};
-var SERVE_OPTIONS = { maxAge: 365 * 24 * 60 * 60 };
+const STATIC_FILES_MAP = {};
+const SERVE_OPTIONS = { maxAge: 365 * 24 * 60 * 60 };
 
-module.exports = function (app, config, passport) {
+module.exports = function(app, config, passport) {
   if (!config.app.keys) { throw new Error("Please add session secret key in the config file!"); }
   app.keys = config.app.keys;
 
@@ -39,7 +39,7 @@ module.exports = function (app, config, passport) {
   app.use(function *(next) {
     this.render = views(config.app.root + "/src/views", {
       map: { html: "swig" },
-      cache : config.app.env === "development" ? "memory" : false,
+      cache: config.app.env === "development" ? "memory" : false,
     });
     yield next;
   });

@@ -1,10 +1,12 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import AuthStore from "../stores/auth";
 
-export default class SignOut extends React.Component {
+export default class SignOut extends Component {
+  static displayName = "SignOut";
+  static contextTypes = { router: PropTypes.func };
+
   constructor() {
     super();
-    this.displayName = 'SignOut';
   }
 
   componentWillMount() {
@@ -18,4 +20,3 @@ export default class SignOut extends React.Component {
   }
 }
 
-SignOut.contextTypes = { router: React.PropTypes.func };

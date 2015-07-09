@@ -1,17 +1,17 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import { Link } from "react-router";
 
-import { Jumbotron, Col, Input, Button, Row } from "react-bootstrap";
+import { Col, Input, Button, Row } from "react-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-export default class SignIn extends React.Component {
+export default class SignIn extends Component {
+  static displayName = "SignInPage";
   constructor(props) {
-      super(props);
-      this.displayName = 'SignInPage';
-      this.state = {error: props.initialError};
-      this.retryTransition = this.retryTransition.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+    super(props);
+    this.state = { error: props.initialError };
+    this.retryTransition = this.retryTransition.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -26,18 +26,6 @@ export default class SignIn extends React.Component {
     AuthStore.removeChangeListener(this.retryTransition);
   }
 
-  handleSubmit (e) {
-    e.preventDefault();
-    const username = this.refs.username.getValue();
-    const password = this.refs.password.getValue();
-      AuthStore.signIn(username, password, (err, user) => {
-          if (err || !user) {
-              return this.setState({ error: true });
-          }
-          this.retryTransition();
-      }.bind(this));
-  }
-
   retryTransition() {
     if (SignIn.attemptedTransition) {
       let transition = SignIn.attemptedTransition;
@@ -48,8 +36,16 @@ export default class SignIn extends React.Component {
     }
   }
 
-  renderErrorBlock() {
-    return this.state.error ? (<p className="help-block">Bad login information</p>) : null;
+  handleSubmit(e) {
+    e.preventDefault();
+    const username = this.refs.username.getValue();
+    const password = this.refs.password.getValue();
+    AuthStore.signIn(username, password, (err, user) => {
+      if (err || !user) {
+        return this.setState({ error: true });
+      }
+      this.retryTransition();
+    }.bind(this));
   }
 
   render() {
@@ -58,7 +54,11 @@ export default class SignIn extends React.Component {
         <h1>Sign In</h1>
         <Row>
           <Col md={8}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.</p>
           </Col>
           <Col md={4}>
             <form onSubmit={this.handleSubmit} className={this.state.error ? "has-error" : null}>
@@ -77,8 +77,12 @@ export default class SignIn extends React.Component {
       </div>
     );
   }
+
+  renderErrorBlock() {
+    return this.state.error ? (<p className="help-block">Bad login information</p>) : null;
+  }
 }
 
-SignIn.contextTypes = { router: React.PropTypes.func.isRequired };
+SignIn.contextTypes = { router: PropTypes.func.isRequired };
 SignIn.statics = { attemptedTransition: null };
 SignIn.defaultProps = { initialError: false };

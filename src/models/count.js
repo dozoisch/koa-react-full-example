@@ -10,9 +10,9 @@ var CountSchema = new Schema({
   updated: { type: Date, default: Date.now },
 });
 
-CountSchema.pre("save", function (next) {
-    this.updated = new Date();
-    next();
+CountSchema.pre("save", function(next) {
+  this.updated = new Date();
+  next();
 });
 
 mongoose.model("Count", CountSchema);

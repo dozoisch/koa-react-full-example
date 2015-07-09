@@ -2,9 +2,9 @@ import React from "react";
 import Counter from "../components/counter";
 
 export default class Index extends React.Component {
+  static displayName = "IndexPage";
   constructor() {
     super();
-    this.displayName = "IndexPage";
   }
 
   render() {

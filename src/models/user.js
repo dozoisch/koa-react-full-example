@@ -8,8 +8,8 @@ var UserSchema = new Schema({
   username: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
 }, {
-  toJSON : {
-    transform: function (doc, ret, options) {
+  toJSON: {
+    transform: function(doc, ret, options) {
       delete ret.password;
     },
   },
@@ -18,7 +18,7 @@ var UserSchema = new Schema({
 /**
  * Middlewares
  */
-UserSchema.pre("save", function (done) {
+UserSchema.pre("save", function(done) {
   // only hash the password if it has been modified (or is new)
   if (!this.isModified("password")) {
     return done();
@@ -30,8 +30,7 @@ UserSchema.pre("save", function (done) {
       var hash = yield bcrypt.hash(this.password, salt);
       this.password = hash;
       done();
-    }
-    catch (err) {
+    } catch (err) {
       done(err);
     }
   }).call(this).then(done);

@@ -1,5 +1,5 @@
 "use strict";
-var router = require("koa-router");
+var Router = require("koa-router");
 
 var countController = require("../src/controllers/count");
 var indexController = require("../src/controllers/index");
@@ -13,22 +13,29 @@ var secured = function *(next) {
   }
 };
 
-module.exports = function (app, passport) {
+module.exports = function(app, passport) {
   // register functions
-  app.use(router(app));
+  var router = new Router();
 
-  app.get("/", function *() {
+  router.use(function *(next) {
+    this.type = "json";
+    yield next;
+  });
+
+  router.get("/", function *() {
+    this.type = "html";
     yield indexController.index.apply(this);
   });
 
-  app.get("/auth", authController.getCurrentUser);
-  app.post("/auth", authController.signIn);
+  router.get("/auth", authController.getCurrentUser);
+  router.post("/auth", authController.signIn);
 
-  app.all("/signout", authController.signOut);
-  app.post("/signup", authController.createUser);
+  router.all("/signout", authController.signOut);
+  router.post("/signup", authController.createUser);
 
   // secured routes
-  app.get("/value", secured, countController.getCount);
-  app.get("/inc", secured, countController.increment);
-  app.get("/dec", secured, countController.decrement);
+  router.get("/value", secured, countController.getCount);
+  router.get("/inc", secured, countController.increment);
+  router.get("/dec", secured, countController.decrement);
+  app.use(router.routes());
 };

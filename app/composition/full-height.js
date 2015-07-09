@@ -35,5 +35,5 @@ export default function makeFullHeightComponent(Component, heightCalculationFunc
     render() {
       return (<Component {...this.props} ref="childComponent" height={this.state.height} />);
     }
-  }
+  };
 }

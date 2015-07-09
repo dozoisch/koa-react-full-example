@@ -14,29 +14,31 @@ var URLS = {
   signUp: "/signup",
 };
 
-describe("Auth", function () {
+describe("Auth", function() {
   before(co.wrap(function *() {
     yield authHelper.createUser();
   }));
-  describe("Anonymous Call", function () {
-    it("should return empty body", function (done) {
+  describe("Anonymous Call", function() {
+    it("should return empty body", function(done) {
       request.get(URLS.auth)
+      .accept("json")
       .expect(200)
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (err) { return done(err); }
         should.not.exist(res.body.user);
         done();
       });
     });
   });
-  describe("Auth calls", function () {
-    before(function (done) {
+  describe("Auth calls", function() {
+    before(function(done) {
       authHelper.signAgent(request, done);
     });
-    it("should return the user infos", function (done) {
+    it("should return the user infos", function(done) {
       request.get(URLS.auth)
+      .accept("json")
       .expect(200)
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (err) { return done(err); }
         should.exist(res.body);
         should.exist(res.body.user);
@@ -49,5 +51,5 @@ describe("Auth", function () {
     it("should sign up");
   });
 
-  after(function (done) { databaseHelper.dropDatabase(done); });
+  after(function(done) { databaseHelper.dropDatabase(done); });
 });

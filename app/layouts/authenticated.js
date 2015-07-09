@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link, RouteHandler } from "react-router";
 
 import { Jumbotron, Nav, Row, Col } from "react-bootstrap";
@@ -8,10 +8,10 @@ import { NavItemLink } from "react-router-bootstrap";
 import AuthStore from "../stores/auth";
 import SignIn from "../pages/signin";
 
-export default class MainLayout extends React.Component {
+export default class MainLayout extends Component {
+  static displayName = "MainLayout";
   constructor() {
     super();
-    this.displayName = "MainLayout";
   }
 
   static willTransitionTo(transition) {

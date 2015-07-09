@@ -1,7 +1,7 @@
 import Anonymous from "./anonymous";
 import Authenticated from "./authenticated";
 
-export {
+export default {
   Anonymous,
-  Authenticated
+  Authenticated,
 };

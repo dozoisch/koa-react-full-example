@@ -36,5 +36,3 @@ const routes = (
 Router.run(routes, Router.HashLocation, (Handler) => {
   React.render(<Handler/>, container);
 });
-
-

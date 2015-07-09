@@ -9,13 +9,17 @@ import makeFullHeightComponent from "../composition/full-height";
 
 import AuthStore from "../stores/auth";
 
-require("../less/main.less");
+import "../less/main.less";
 
 const App = React.createClass({
   displayName: "App",
 
+  propTypes: {
+    height: PropTypes.Number,
+  },
+
   contextTypes: {
-    router: PropTypes.func
+    router: PropTypes.func,
   },
 
   getInitialState() {
@@ -29,15 +33,15 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    AuthStore.addChangeListener(this.updateLoading);
+    AuthStore.addChangeListener(this.onLoad);
   },
 
   componentWillUnmount() {
-    AuthStore.removeChangeListener(this.updateLoading);
+    AuthStore.removeChangeListener(this.onLoad);
   },
 
-  updateLoading() {
-    AuthStore.removeChangeListener(this.updateLoading);
+  onLoad() {
+    AuthStore.removeChangeListener(this.onLoad);
     this.setState({
       hasLoaded: true,
     });
@@ -48,14 +52,14 @@ const App = React.createClass({
     return (
       <div>
         <Navbar brand="React Koa Gulp Mongoose Mocha Demo" />
-        <div className="transition-crop main-container" style={{ "minHeight": this.props.height}}>
+          <div className="transition-crop main-container" style={{ minHeight: this.props.height }}>
             <TransitionGroup transitionName="transition">
               <RouteHandler key={key} />
             </TransitionGroup>
           </div>
       </div>
     );
-  }
+  },
 });
 
 const FullHeightApp = makeFullHeightComponent(App, () => {
