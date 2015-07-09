@@ -56,12 +56,12 @@ The plugin is under MIT license, please see the LICENSE file provided with the m
 
 ### Soon
 
-Updates to come:
+Updates to come when I get some time:
 
  - Server side rendering with prod webpack config
- - More in-depth React-Koa example
- - Code coverage
- - Error handling
+ - Redux
+ - Code coverage with iSparta istanbul.
+ - ES6/Babel server side
 
 [travis.img]: https://api.travis-ci.org/dozoisch/koa-react-full-example.svg
 [travis.url]: https://travis-ci.org/dozoisch/koa-react-full-example

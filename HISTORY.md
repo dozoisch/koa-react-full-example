@@ -1,5 +1,10 @@
 #History
 
+## 0.6.0
+- Migrated components to es6 (thanks to #31 dcodesmith)
+- Bump all the deps
+- Added eslint to the build
+
 ## 0.5.2
 - Added thinkful badge
 - Fixed issue with webpack version
