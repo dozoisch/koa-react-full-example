@@ -9,43 +9,35 @@ import { NavItemLink } from "react-router-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-const AppNavbar = React.createClass({
-  displayName: "AppNavbar",
-
-  propTypes: {
-    brand: PropTypes.string,
-  },
-
-  getInitialState() {
-    return {
-      user: AuthStore.getUser(),
-    };
-  },
+export default class AppNavbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.displayName = "AppNavbar";
+    this.state = { user: props.user };
+    this.updateUser = this.updateUser.bind(this);
+  }
 
   componentWillMount() {
     AuthStore.init();
-  },
+  }
 
   componentDidMount() {
     AuthStore.addChangeListener(this.updateUser);
-  },
+  }
 
   componentWillUnmount() {
     AuthStore.removeChangeListener(this.updateUser);
-  },
+  }
 
   updateUser() {
-    if(!this.isMounted()) {
-      return;
-    }
     this.setState({
-      user: AuthStore.getUser(),
+      user: AuthStore.getUser()
     });
-  },
+  }
 
   renderBrand() {
     return (<Link to="index">{this.props.brand}</Link>);
-  },
+  }
 
   renderNavLinks() {
     if (this.state.user) {
@@ -67,7 +59,7 @@ const AppNavbar = React.createClass({
         </NavItemLink>
       </Nav>
     );
-  },
+  }
 
   render() {
     return (
@@ -76,6 +68,7 @@ const AppNavbar = React.createClass({
       </Navbar>
     );
   }
-});
+}
 
-export default AppNavbar;
+AppNavbar.propTypes = { brand: React.PropTypes.string };
+AppNavbar.defaultProps = { user: AuthStore.getUser()};

@@ -4,22 +4,21 @@ import { Col, Input, Button } from "react-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-const SignUp = React.createClass({
-  displayName: "SignUp",
-
-  contextTypes: {
-    router: PropTypes.func
-  },
-
-  getInitialState() {
-    return {};
-  },
+export default class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.displayName = 'SignUp';
+    this.state = {};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleSubmit(e) {
     e.preventDefault();
+
     const username = this.refs.username.getValue();
     const password = this.refs.password.getValue();
     const repeatPassword = this.refs.repeatPassword.getValue();
+
     if (password === repeatPassword && password.trim()) {
       AuthStore.signUp(username, password, (err, user) => {
         if (err || !user) {
@@ -28,11 +27,11 @@ const SignUp = React.createClass({
         this.context.router.replaceWith("index");
       });
     }
-  },
+  }
 
   renderErrorBlock() {
     return (<p className="help-block">{this.state.error}</p>);
-  },
+  }
 
   render() {
     return (
@@ -50,6 +49,6 @@ const SignUp = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default SignUp;
+SignUp.contextTypes = { router: React.PropTypes.func };

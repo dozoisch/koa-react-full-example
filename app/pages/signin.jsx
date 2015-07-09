@@ -5,47 +5,38 @@ import { Jumbotron, Col, Input, Button, Row } from "react-bootstrap";
 
 import AuthStore from "../stores/auth";
 
-const SignIn = React.createClass({
-  displayName: "SignInPage",
-
-  contextTypes: {
-    router: PropTypes.func
-  },
-
-  statics: {
-    attemptedTransition: null
-  },
-
-  getInitialState() {
-    return {
-      error: false
-    };
-  },
+export default class SignIn extends React.Component {
+  constructor(props) {
+      super(props);
+      this.displayName = 'SignInPage';
+      this.state = {error: props.initialError};
+      this.retryTransition = this.retryTransition.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   componentWillMount() {
     this.retryTransition();
-  },
+  }
 
   componentDidMount() {
     AuthStore.addChangeListener(this.retryTransition);
-  },
+  }
 
   componentWillUnmount() {
     AuthStore.removeChangeListener(this.retryTransition);
-  },
+  }
 
   handleSubmit (e) {
     e.preventDefault();
     const username = this.refs.username.getValue();
     const password = this.refs.password.getValue();
-    AuthStore.signIn(username, password, function (err, user) {
-      if (err || !user) {
-        return this.setState({ error: true });
-      }
-      this.retryTransition();
-
-    }.bind(this));
-  },
+      AuthStore.signIn(username, password, (err, user) => {
+          if (err || !user) {
+              return this.setState({ error: true });
+          }
+          this.retryTransition();
+      }.bind(this));
+  }
 
   retryTransition() {
     if (SignIn.attemptedTransition) {
@@ -55,11 +46,11 @@ const SignIn = React.createClass({
     } else {
       this.context.router.replaceWith("index");
     }
-  },
+  }
 
   renderErrorBlock() {
     return this.state.error ? (<p className="help-block">Bad login information</p>) : null;
-  },
+  }
 
   render() {
     return (
@@ -85,7 +76,9 @@ const SignIn = React.createClass({
         </Row>
       </div>
     );
-  },
-});
+  }
+}
 
-export default SignIn;
+SignIn.contextTypes = { router: React.PropTypes.func.isRequired };
+SignIn.statics = { attemptedTransition: null };
+SignIn.defaultProps = { initialError: false };

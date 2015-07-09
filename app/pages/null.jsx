@@ -1,8 +1,11 @@
 "use strict";
 import React from "react";
 
-const Null = React.createClass({
-  displayName: "NullPage",
+export default class Null extends React.Component {
+  constructor() {
+    super();
+    this.displayName = 'NullPage';
+  }
 
   render() {
     return (
@@ -12,6 +15,4 @@ const Null = React.createClass({
       </div>
     );
   }
-});
-
-export default Null;
+}

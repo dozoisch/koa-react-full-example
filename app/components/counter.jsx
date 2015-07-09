@@ -10,32 +10,35 @@ const get = (url, cb) => {
   .end(cb);
 }
 
-const Counter =  React.createClass({
-  displayName: "Counter",
-
-  getInitialState() {
-    return { count : this.props.initialCount || 0 };
-  },
+export default class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: props.initialCount};
+    this.displayName = "Counter";
+    this.onClickInc = this.onClickInc.bind(this);
+    this.onClickDec = this.onClickDec.bind(this);
+  }
 
   componentWillMount() {
     get("/value", (err, res) => {
       this.setState({ count: res.body.count });
     });
-  },
+  }
 
   onClickInc(event) {
     event.preventDefault();
     get("/inc", (err, res) => {
       this.setState({ count: res.body.count });
     });
-  },
+  }
 
   onClickDec(event) {
     event.preventDefault();
     get("/dec", (err, res) => {
       this.setState({count: res.body.count});
-    }.bind(this));
-  },
+    });
+  }
+
   render() {
     return (
       <div>
@@ -49,6 +52,7 @@ const Counter =  React.createClass({
       </div>
     );
   }
-});
+}
 
-export default Counter;
+Counter.propTypes = { initialCount: React.PropTypes.number };
+Counter.defaultProps = { initialCount: 0 };
