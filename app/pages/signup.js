@@ -11,10 +11,9 @@ export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const username = this.refs.username.getValue();

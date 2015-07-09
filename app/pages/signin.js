@@ -7,14 +7,14 @@ import AuthStore from "../stores/auth";
 
 export default class SignIn extends Component {
   static displayName = "SignInPage";
+
+  static contextTypes = { router: PropTypes.func.isRequired };
+  static attemptedTransition = null;
+  static defaultProps = { initialError: false };
+
   constructor(props) {
     super(props);
     this.state = { error: props.initialError };
-    this.retryTransition = this.retryTransition.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {
     this.retryTransition();
   }
 
@@ -26,7 +26,7 @@ export default class SignIn extends Component {
     AuthStore.removeChangeListener(this.retryTransition);
   }
 
-  retryTransition() {
+  retryTransition = () => {
     if (SignIn.attemptedTransition) {
       let transition = SignIn.attemptedTransition;
       SignIn.attemptedTransition = null;
@@ -36,7 +36,7 @@ export default class SignIn extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     const username = this.refs.username.getValue();
     const password = this.refs.password.getValue();
@@ -45,7 +45,7 @@ export default class SignIn extends Component {
         return this.setState({ error: true });
       }
       this.retryTransition();
-    }.bind(this));
+    });
   }
 
   render() {
@@ -82,7 +82,3 @@ export default class SignIn extends Component {
     return this.state.error ? (<p className="help-block">Bad login information</p>) : null;
   }
 }
-
-SignIn.contextTypes = { router: PropTypes.func.isRequired };
-SignIn.statics = { attemptedTransition: null };
-SignIn.defaultProps = { initialError: false };

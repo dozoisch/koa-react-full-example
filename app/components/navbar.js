@@ -11,10 +11,12 @@ import AuthStore from "../stores/auth";
 export default class AppNavbar extends Component {
   static displayName = "AppNavbar";
 
+  static propTypes = { brand: PropTypes.string };
+  static defaultProps = { user: AuthStore.getUser() };
+
   constructor(props) {
     super(props);
     this.state = { user: props.user };
-    this.onStoreChange = this.onStoreChange.bind(this);
   }
 
   componentWillMount() {
@@ -29,7 +31,7 @@ export default class AppNavbar extends Component {
     AuthStore.removeChangeListener(this.onStoreChange);
   }
 
-  onStoreChange() {
+  onStoreChange = () => {
     this.setState({
       user: AuthStore.getUser(),
     });
@@ -69,6 +71,3 @@ export default class AppNavbar extends Component {
     );
   }
 }
-
-AppNavbar.propTypes = { brand: PropTypes.string };
-AppNavbar.defaultProps = { user: AuthStore.getUser() };

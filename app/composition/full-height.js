@@ -10,7 +10,6 @@ export default function makeFullHeightComponent(Component, heightCalculationFunc
       super();
       this.displayName = "FullHeightWrapper";
       this.state = { height: 0 };
-      this.calculateHeight = this.calculateHeight.bind(this);
     }
 
     getComponent() {
@@ -26,7 +25,7 @@ export default function makeFullHeightComponent(Component, heightCalculationFunc
       window.removeEventListener("resize", this.calculateHeight);
     }
 
-    calculateHeight() {
+    calculateHeight = () => {
       this.setState({
         height: heightCalculationFunc(),
       });

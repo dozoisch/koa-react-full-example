@@ -12,12 +12,11 @@ const get = (url, cb) => {
 export default class Counter extends React.Component {
   static displayName = "Counter";
   static propTypes = { initialCount: React.PropTypes.number };
+  static defaultProps = { initialCount: 0 };
 
   constructor(props) {
     super(props);
     this.state = { count: props.initialCount };
-    this.onClickInc = this.onClickInc.bind(this);
-    this.onClickDec = this.onClickDec.bind(this);
   }
 
   componentWillMount() {
@@ -30,7 +29,7 @@ export default class Counter extends React.Component {
     });
   }
 
-  onClickInc(event) {
+  onClickInc = (event) => {
     event.preventDefault();
     get("/inc", (err, res) => {
       if (err) {
@@ -41,7 +40,7 @@ export default class Counter extends React.Component {
     });
   }
 
-  onClickDec(event) {
+  onClickDec = (event) => {
     event.preventDefault();
     get("/dec", (err, res) => {
       if (err) {
@@ -66,5 +65,3 @@ export default class Counter extends React.Component {
     );
   }
 }
-
-Counter.defaultProps = { initialCount: 0 };
