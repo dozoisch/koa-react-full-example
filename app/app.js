@@ -1,4 +1,3 @@
-"use strict";
 import React, { PropTypes } from "react";
 import TransitionGroup from "react/lib/ReactCSSTransitionGroup";
 import Router, { Route, DefaultRoute, NotFoundRoute, Redirect } from "react-router";

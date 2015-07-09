@@ -1,46 +1,46 @@
-var request = require("superagent");
+import request from "superagent";
 
-var _user = null;
-var _changeListeners  = [];
-var _initCalled = false;
+let _user = null;
+let _changeListeners  = [];
+let _initCalled = false;
 
-var URLS = {
+const URLS = {
   AUTH: "/auth",
   SIGN_UP: "/signup",
   SIGN_OUT: "/signout"
 };
 
-var AuthStore = {
-  init: function () {
+const AuthStore = {
+  init: function() {
     if(_initCalled) {
       return;
     }
     _initCalled = true;
     this.fetchUser();
   },
-  fetchUser: function () {
+  fetchUser: function() {
     request.get(URLS.AUTH)
       .set("Accept", "application/json")
       .set("Content-Type", "application/json")
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (!err && res.body && res.body.user) {
           _user = parseUser(res.body.user);
         }
         AuthStore.notifyChange();
       });
   },
-  signIn: function (username, password, done) {
+  signIn: function(username, password, done) {
     _postAndHandleParseUser(URLS.AUTH, username, password, done);
   },
-  signUp: function (username, password, done) {
+  signUp: function(username, password, done) {
     _postAndHandleParseUser(URLS.SIGN_UP  , username, password, done);
   },
-  signOut: function (done) {
+  signOut: function(done) {
     _user = null;
     request.get(URLS.SIGN_OUT)
       .set("Accept", "application/json")
       .set("Content-Type", "application/json")
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (!err) {
           AuthStore.notifyChange();
         }
@@ -49,33 +49,33 @@ var AuthStore = {
         }
       });
   },
-  isLoggedIn: function () {
+  isLoggedIn: function() {
     return _user !== null;
   },
-  getUser: function () {
+  getUser: function() {
     return _user;
   },
   notifyChange: function() {
-    _changeListeners.forEach(function (listener) {
+    _changeListeners.forEach(function(listener) {
       listener();
     });
   },
-  addChangeListener: function (listener) {
+  addChangeListener: function(listener) {
     _changeListeners.push(listener);
   },
-  removeChangeListener: function (listener) {
-    _changeListeners = _changeListeners.filter(function (l) {
+  removeChangeListener: function(listener) {
+    _changeListeners = _changeListeners.filter(function(l) {
       return listener !== l;
     });
   },
 };
 
-function _postAndHandleParseUser (url, username, password, done) {
+function _postAndHandleParseUser(url, username, password, done) {
   request.post(url)
     .set("Accept", "application/json")
     .set("Content-Type", "application/json")
     .send({ username: username, password: password })
-    .end(function (err, res) {
+    .end(function(err, res) {
       if (!err && res.body && res.body.user) {
         _user = parseUser(res.body.user);
         AuthStore.notifyChange();
@@ -86,7 +86,7 @@ function _postAndHandleParseUser (url, username, password, done) {
     });
 }
 
-function parseUser (user) {
+function parseUser(user) {
   return {
     id: user.id,
     username: user.username,
