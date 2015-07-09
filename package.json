@@ -81,7 +81,7 @@
     "null-loader": "~0.1.1",
     "react-hot-loader": "~1.2.8",
     "react-proxy-loader": "~0.3.4",
-    "should": "~6.0.1",
+    "should": "~7.0.1",
     "style-loader": "~0.12.3",
     "supertest": "0.15.x",
     "url-loader": "~0.5.5",
