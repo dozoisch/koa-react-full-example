@@ -54,9 +54,9 @@
     "mongoose": "~4.0.1",
     "passport-local": "1.0.x",
     "react": "~0.13.1",
-    "react-bootstrap": "~0.21.0",
+    "react-bootstrap": "~0.23.7",
     "react-router": "~0.13.2",
-    "react-router-bootstrap": "~0.13.0",
+    "react-router-bootstrap": "~0.17.1",
     "superagent": "~1.2.0",
     "swig": "1.4.x"
   },
