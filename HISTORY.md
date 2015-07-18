@@ -1,5 +1,8 @@
 #History
 
+## 0.6.1
+- Webpack Dev Server is now proxied by koa
+
 ## 0.6.0
 - Migrated components to es6 (thanks to #31 dcodesmith)
 - Bump all the deps

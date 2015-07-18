@@ -25,6 +25,11 @@ module.exports = function(app, config, passport) {
 
   if (config.app.env === "production") {
     app.use(serve(path.join(config.app.root, "build", "public"), SERVE_OPTIONS, STATIC_FILES_MAP));
+  } else {
+    app.use(require("koa-proxy")({
+      host: "http://localhost:2992",
+      match: /^\/_assets\//,
+    }));
   }
 
   app.use(session({

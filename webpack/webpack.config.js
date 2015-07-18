@@ -22,7 +22,8 @@ const defaultOptions = {
 export default (options) => {
   options = _.merge({}, defaultOptions, options);
 
-  options.publicPath = options.devServer ? "//localhost:2992/_assets/" : "";
+  options.hotPort = 2992;
+  options.publicPath = options.devServer ? "/_assets/" : "";
   const environment = options.test || options.development ? "development" : "production";
   const babelLoader = "babel";
   const reactLoader = options.development ? `react-hot!${babelLoader}` : babelLoader;
@@ -76,6 +77,8 @@ export default (options) => {
     ],
 
     devServer: {
+      host: "localhost",
+      port: options.hotPort,
       stats: {
         exclude: options.excludeFromStats,
       },
