@@ -25,9 +25,9 @@ function _postAndHandleParseUser(url, username, password, done) {
     .end(function(err, res) {
       if (!err && res.body && res.body.user) {
         _user = parseUser(res.body.user);
-        /* eslint-disable block-scoped-var */
+        /* eslint-disable no-use-before-define */
         AuthStore.notifyChange();
-        /* eslint-enable block-scoped-var */
+        /* eslint-enable no-use-before-define */
       }
       if (done) {
         done(err, _user);
